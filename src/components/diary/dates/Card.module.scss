@@ -1,0 +1,23 @@
+@import "../../../styles/variables.scss";
+
+.diary_dates_list_item {
+    display: flex;
+    flex-direction: column;
+    width: 125px;
+    text-align: center;
+    background: $dwhite;
+    border-radius: 15px;
+    box-shadow: $shadow;
+    &_date {
+        padding: 10px;
+        background: $white;
+        border-radius: 15px;
+    }
+    &_callories {
+        padding: 10px;
+    }
+}
+
+.selected_date {
+    color: $green;
+}

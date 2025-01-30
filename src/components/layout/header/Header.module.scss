@@ -1,0 +1,21 @@
+@import "../../../styles/variables.scss";
+
+.header {
+    background: $dwhite;
+    padding: 25px;
+    box-shadow: $shadow;
+    &_nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &_logo {
+            width: 128px;
+            height: 28px;
+        }
+        &_list {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+    }
+}
