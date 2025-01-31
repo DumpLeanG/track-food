@@ -1,0 +1,12 @@
+@import "../../../styles/variables.scss";
+
+.diary_dates_arrow {
+    border: none;
+    outline: none;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: $shadow;
+    background: $white;
+    line-height: 0;
+    cursor: pointer;
+}

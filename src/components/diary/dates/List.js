@@ -4,28 +4,33 @@ import Card from './Card';
 import styles from "./List.module.scss";
 import { useState } from 'react';
 
-function dates(current) {
+function dates(day) {
+    let currentDay = new Date(day);
     let week = [];
-    current.setDate((current.getDate() - current.getDay() +1));
+    currentDay.setDate((currentDay.getDate() - currentDay.getDay() + 1));
     for (let i = 0; i < 7; i++) {
         week.push(
-            new Date(current)  
+            new Date(currentDay)  
         ); 
-        current.setDate(current.getDate() +1);
+        currentDay.setDate(currentDay.getDate() + 1);
     }
     return week; 
 }
 
-export default function List() {
-    const [activeDate, setActiveDate] = useState(new Date());
-    let currentDates = dates(new Date());
+export default function List({ day }) {
+    const [activeDate, setActiveDate] = useState(day.getDay());
+    let currentDates = dates(day);
     const weekDays = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
     return (
         <ul className={styles.diary_dates_list}>
             {
                 currentDates.map((currentDate) => (
-                    <Card key={currentDate} date={weekDays[currentDate.getDay()] + " / " + currentDate.getDate() + "." + (currentDate.getMonth() + 1)} callories="1459 ккал" isActive={currentDate.toDateString() === activeDate.toDateString()}/>
+                    <Card key={currentDate.getDay()} 
+                    handleClick={() => setActiveDate(currentDate.getDay())}
+                    date={weekDays[currentDate.getDay()] + " / " + currentDate.getDate() + "." + (currentDate.getMonth() + 1)} 
+                    callories="1459 ккал" 
+                    isActive={currentDate.getDay() === activeDate}/>
                 ))
             }
         </ul>
