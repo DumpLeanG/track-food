@@ -1,0 +1,41 @@
+@import "../../../styles/variables.scss";
+
+.diary_meals_result {
+    display: flex;
+    flex-wrap: wrap;
+    background: $dwhite;
+    border-radius: 15px;
+    box-shadow: $shadow;
+    width: 100%;
+    text-align: left;
+    &_names {
+        display: flex;
+        flex: content;
+        width: 100%;
+        padding: 15px 30px;
+        gap: 40px;
+        background: $white;
+        border-radius: 15px;
+        span {
+            width: 60px;
+        }
+        :last-child {
+            margin-left: auto;
+            text-align: right;
+            flex: 100 0 auto;
+        }
+    }
+    &_numbers {
+        display: flex;
+        gap: 40px;
+        width: 100%;
+        padding: 15px 30px;
+        span {
+            width: 60px;
+        }
+        :last-child {
+            margin-left: auto;
+            text-align: right;
+        }
+    }
+}

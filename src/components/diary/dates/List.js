@@ -4,7 +4,7 @@ import Card from './Card';
 import styles from "./List.module.scss";
 import { useState } from 'react';
 
-function dates(day) {
+function getWeekDays(day) {
     let currentDay = new Date(day);
     let week = [];
     currentDay.setDate((currentDay.getDate() - currentDay.getDay() + 1));
@@ -19,7 +19,7 @@ function dates(day) {
 
 export default function List({ day }) {
     const [activeDate, setActiveDate] = useState(day.getDay());
-    let currentDates = dates(day);
+    let currentDates = getWeekDays(day);
     const weekDays = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
     return (
@@ -29,7 +29,7 @@ export default function List({ day }) {
                     <Card key={currentDate.getDay()} 
                     handleClick={() => setActiveDate(currentDate.getDay())}
                     date={weekDays[currentDate.getDay()] + " / " + currentDate.getDate() + "." + (currentDate.getMonth() + 1)} 
-                    callories="1459 ккал" 
+                    calories="1459 ккал" 
                     isActive={currentDate.getDay() === activeDate}/>
                 ))
             }

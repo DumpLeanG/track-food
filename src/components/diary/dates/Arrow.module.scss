@@ -10,3 +10,9 @@
     line-height: 0;
     cursor: pointer;
 }
+
+.diary_dates_arrow:hover {
+    img {
+        filter: $hvr-filter-from-black;
+    }
+}

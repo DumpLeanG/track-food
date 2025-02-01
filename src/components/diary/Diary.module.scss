@@ -1,5 +1,8 @@
 .diary {
-    display: flex;
-    flex-direction: column;
     padding: 40px 0;
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
 }
