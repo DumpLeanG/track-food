@@ -2,7 +2,7 @@
 
 .diary_meals_result {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     background: $dwhite;
     border-radius: 15px;
     box-shadow: $shadow;

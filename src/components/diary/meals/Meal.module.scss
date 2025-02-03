@@ -1,0 +1,48 @@
+@import "../../../styles/variables.scss";
+
+.diary_meals_item {
+    display: flex;
+    flex-direction: column;
+    background: $dwhite;
+    border-radius: 15px;
+    box-shadow: $shadow;
+    width: 100%;
+    text-align: left;
+    &_head {
+        padding: 15px 30px;
+        background: $white;
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-between;
+        &_name {
+            display: flex;
+            gap: 15px;
+        }
+    }
+    &_numbers {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 15px 30px;
+        span {
+            width: 60px;
+        }
+        &_pfc {
+            display: flex;
+            gap: 40px;
+        }
+        &_calories {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            span {
+                text-align: right;
+            }
+        }
+    }
+    &_products {
+        list-style: none;
+        padding: 15px;
+    }
+}

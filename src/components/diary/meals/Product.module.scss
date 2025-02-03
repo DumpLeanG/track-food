@@ -1,0 +1,34 @@
+@import "../../../styles/variables.scss";
+
+.diary_meals_item_products_item {
+    padding: 15px;
+    background: $white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    &_info {
+        display: flex;
+        justify-content: space-between;
+        &_name {
+            color: $txt-color;
+        }
+        &_weight {
+            color: $green;
+            text-align: right;
+        }
+        &_pfc {
+            display: flex;
+            gap: 40px;
+            span {
+                color: $grey;
+                width: 60px;
+            }
+        }
+        &_calories {
+            color: $grey;
+            width: 60px;
+            text-align: right;
+        }
+    }
+}
