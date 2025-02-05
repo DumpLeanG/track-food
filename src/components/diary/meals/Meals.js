@@ -6,7 +6,10 @@ export default function Meals() {
     return (
         <div className={styles.diary_meals}>
             <DayResult />
-            <Meal picture="breakfast" type="Завтрак" isActive={true}/>
+            <Meal type="breakfast"/>
+            <Meal type="lunch"/>
+            <Meal type="dinner"/>
+            <Meal type="snack"/>
         </div>
     );
 }

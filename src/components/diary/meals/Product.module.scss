@@ -10,6 +10,7 @@
     &_info {
         display: flex;
         justify-content: space-between;
+        gap: 15px;
         &_name {
             color: $txt-color;
         }

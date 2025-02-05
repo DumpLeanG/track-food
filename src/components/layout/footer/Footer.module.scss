@@ -1,0 +1,11 @@
+@import "../../../styles/variables.scss";
+
+.footer {
+    background: $dwhite;
+    box-shadow: $invert-shadow;
+    text-align: center;
+    padding: 20px;
+    span {
+        color: $grey;
+    }
+}

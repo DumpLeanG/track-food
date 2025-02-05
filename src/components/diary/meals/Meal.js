@@ -1,23 +1,40 @@
+"use client";
+
 import styles from "./Meal.module.scss";
 import Image from "next/image";
-import AddButton from "../../layout/buttons/AddButton";
-import ExpandButton from "../../layout/buttons/ExpandButton";
+import AddButton from "../../buttons/AddButton";
+import ExpandButton from "../../buttons/ExpandButton";
 import Product from "./Product";
+import { useState } from "react";
 
-export default function Meal( { picture, type, isActive} ) {
+function renderMealType(type) {
+    switch (type) {
+        case "breakfast": 
+            return "Завтрак"
+        case "lunch": 
+            return "Обед"
+        case "dinner": 
+            return "Ужин"
+        default: 
+            return "Перекус"
+    }
+}
+
+export default function Meal( { type } ) {
+    const [isActive, setIsActive] = useState(false)
     return (
-        <div className={styles.diary_meals_item} key={picture}>
+        <div className={styles.diary_meals_item} key={type}>
             <div className={styles.diary_meals_item_head}>
                 <div className={styles.diary_meals_item_head_name}>
                     <Image
                         className={styles.header_nav_logo}
-                        src={`/${picture}.svg`}
+                        src={`/${type}.svg`}
                         alt={type}
                         width={20}
                         height={20}
                         priority
                     />
-                    <span>{type}</span>
+                    <span>{renderMealType(type)}</span>
                 </div>
                 <AddButton />
             </div>
@@ -29,12 +46,15 @@ export default function Meal( { picture, type, isActive} ) {
                 </div>
                 <div className={styles.diary_meals_item_numbers_calories}>
                     <span>562</span>
-                    <ExpandButton isActive={isActive}/>
+                    <ExpandButton isActive={isActive} handleClick={() => setIsActive(!isActive)}/>
                 </div>
             </div>
-            <ul className={styles.diary_meals_item_products}>
-                <Product />
-            </ul>
+            {
+                isActive && 
+                <ul className={styles.diary_meals_item_products}>
+                    <Product />
+                </ul>
+            }
         </div>
     );
 }

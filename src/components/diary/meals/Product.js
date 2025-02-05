@@ -1,6 +1,7 @@
 import styles from "./Product.module.scss";
+import Button from "../../buttons/Button";
 
-export default function Product( {isActive} ) {
+export default function Product() {
 
     return (
         <li className={styles.diary_meals_item_products_item}>
@@ -15,6 +16,10 @@ export default function Product( {isActive} ) {
                     <span>0.6</span>
                 </div>
                 <span className={styles.diary_meals_item_products_item_info_calories}>12</span>
+            </div>
+            <div className={styles.diary_meals_item_products_item_info}>
+                <Button type="edit" />
+                <Button type="delete" />
             </div>
         </li>
     );

@@ -1,0 +1,19 @@
+@import "../../styles/variables.scss";
+
+.button {
+    padding: 10px;
+    width: 100%;
+    background: $green;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    color: $white;
+    font-weight: 700;
+    text-align: center;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.delete_btn {
+    background: $red;
+}
