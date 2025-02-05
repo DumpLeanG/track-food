@@ -5,8 +5,11 @@ $white: #FEFEFE;
 $green: #54AC5A;
 $red: #C13C3C;
 $grey: #3A4F3A;
+$blue: rgba(43, 122, 195, 1);
+$magenta: rgba(209, 52, 139, 1);
+$yellow: rgba(227, 170, 64, 1);
 
 $shadow: 4px 4px 20px rgba(0, 21, 0, 0.25);
 $invert-shadow: -4px -4px 20px rgba(0, 21, 0, 0.25);
 
-$hvr-filter-from-black: invert(50%) sepia(84%) saturate(274%) hue-rotate(74deg) brightness(98%) contrast(94%);; 
+$hvr-filter-from-black: invert(50%) sepia(84%) saturate(274%) hue-rotate(74deg) brightness(98%) contrast(94%);

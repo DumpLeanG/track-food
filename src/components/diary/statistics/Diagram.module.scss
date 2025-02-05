@@ -1,0 +1,49 @@
+@import "../../../styles/variables.scss";
+
+.diary_statistics_diagram {
+    display: flex;
+    padding: 15px 30px;
+    background: $white;
+    border-radius: 15px;
+    box-shadow: $shadow;
+    gap: 40px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    &_labels {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        list-style: none;
+        li {
+            display: flex;
+            align-items: center;
+            span {
+                margin-right: 5px;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                border: 3px solid $dwhite;
+            }
+        }
+        :nth-child(1) {
+            span {
+                background: $blue;
+            }
+            
+        }
+        :nth-child(2) {
+            span {
+                background: $magenta;
+            }
+            
+        }
+        :nth-child(3) {
+            span {
+                background: $yellow;
+            }
+            
+        }
+        
+    }
+}

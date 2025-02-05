@@ -1,0 +1,38 @@
+@import "../../../styles/variables.scss";
+
+.diary_statistics_summary {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 30px;
+    background: $white;
+    border-radius: 15px;
+    box-shadow: $shadow;
+    gap: 10px;
+    &_line {
+        width: 560px;
+        padding: 5px;
+        border-radius: 10px;
+        background: $dwhite;
+        text-align: center;
+        position: relative;
+        margin-bottom: 10px;
+        &_fill {
+            padding: 5px;
+            border-radius: 10px;
+            background: $green;
+            color: $white;
+        }
+    }
+    &_text {
+        width: 100%;
+        span {
+            text-align: right;
+            float: right;
+        }
+    }
+    hr {
+        height: 3px;
+        border: none;
+        background: $dwhite;
+    }
+}
