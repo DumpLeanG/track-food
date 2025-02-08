@@ -16,6 +16,23 @@
             display: flex;
             list-style: none;
             gap: 40px;
+            a:hover {
+                color: $green;
+            }
         }
     }
+}
+
+.current_link {
+    color: $green;
+}
+
+.current_link::after {
+        margin-top: 5px;
+        content:""; 
+        float:left; 
+        background:$green; 
+        width:100%; 
+        height:5px; 
+        border-radius: 2px;
 }
