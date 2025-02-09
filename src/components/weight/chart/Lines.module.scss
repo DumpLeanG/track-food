@@ -1,0 +1,21 @@
+@import "../../../styles/variables.scss";
+
+.weight_chart_lines {
+    padding: 20px 0;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top_dash {
+    width: 100%;
+    border-top: 3px dashed $red;
+    display: block;
+}
+
+.bottom_dash {
+    width: 100%;
+    border-top: 3px dashed $green;
+    display: block;
+}

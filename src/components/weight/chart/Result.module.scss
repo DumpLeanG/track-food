@@ -1,0 +1,9 @@
+@import "../../../styles/variables.scss";
+
+.weight_chart_result {
+    padding: 15px 30px;
+    display: flex;
+    gap: 40px;
+    background: $white;
+    border-radius: 15px;
+}

@@ -1,0 +1,9 @@
+@import "../../../styles/variables.scss";
+
+.weight_chart {
+    display: flex;
+    flex-direction: column;
+    background: $dwhite;
+    border-radius: 15px;
+    box-shadow: $shadow;
+}
