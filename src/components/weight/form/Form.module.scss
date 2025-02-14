@@ -1,0 +1,11 @@
+@import "@/styles/variables.scss";
+
+.weight_form {
+    padding: 15px 30px;
+    border-radius: 15px;
+    background: $white;
+    box-shadow: $shadow;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

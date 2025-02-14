@@ -12,9 +12,9 @@ const data = {
         label: '% Калорий',
         data: [28, 34.5, 37.5],
         backgroundColor: [
-          'rgba(43, 122, 195, 1)',
-          'rgba(209, 52, 139, 1)',
-          'rgba(227, 170, 64, 1)',
+          '#2B7AC3',
+          '#D1348B',
+          '#E3AA40',
         ],
         borderWidth: 0,
       },

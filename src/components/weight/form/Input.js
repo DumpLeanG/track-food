@@ -9,7 +9,7 @@ export default function Input( {label, defaultValue} ) {
     const [inputValue, setInputValue] = useState(defaultValue);
 
     return (
-        <div className={styles.weight_inputs_item}>
+        <div className={styles.weight_form_inputs_item}>
             <label>
                 {label}
             </label>

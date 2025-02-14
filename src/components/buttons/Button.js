@@ -1,33 +1,33 @@
 import styles from "./Button.module.scss";
 
-export default function Button( {type} ) {
+export default function Button( {type, onClick} ) {
 
 
     switch(type) {
         
         case "delete":
             return (
-                <button className={`${styles.button} ${styles.delete_btn}`}>Удалить</button>
+                <button type="submit" className={`${styles.button} ${styles.delete_btn}`} onClick={onClick}>Удалить</button>
             )
         case "save":
             return (
-                <button className={styles.button}>Сохранить</button>
+                <button type="submit" className={styles.button} onClick={onClick}>Сохранить</button>
             )
         case "more":
             return (
-                <button className={styles.button}>Посмотреть ещё</button>
+                <button type="submit" className={styles.button} onClick={onClick}>Посмотреть ещё</button>
             )
         case "login":
             return (
-                <button className={styles.button}>Войти</button>
+                <button type="submit" className={styles.button} onClick={onClick}>Войти</button>
             )
         case "register":
             return (
-                <button className={styles.button}>Зарегистрироваться</button>
+                <button type="submit" className={styles.button} onClick={onClick}>Зарегистрироваться</button>
             )
         default:
             return (
-                <button className={styles.button}>Изменить</button>
+                <button type="submit" className={styles.button} onClick={onClick}>Изменить</button>
             )
     }
     

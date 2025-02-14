@@ -1,9 +1,13 @@
-@import "@/styles/variables.scss";
+@import "@/styles/variables";
 
-.weight_chart {
+.weight_changes {
     display: flex;
     flex-direction: column;
     background: $dwhite;
     border-radius: 15px;
     box-shadow: $shadow;
+    button {
+        margin: 15px;
+        width: calc(100% - 30px);
+    }
 }

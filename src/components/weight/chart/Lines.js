@@ -11,6 +11,7 @@ import {
     Title,
     Tooltip,
     Legend,
+    defaults,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
@@ -24,95 +25,56 @@ ChartJS.register(
     Legend
 );
 
-const weights = [
-    {
-        weight: 71.4,
-        date: "29.12",
-    },
-    {
-        weight: 72.3,
-        date: "30.12",
-    },
-    {
-        weight: 70.4,
-        date: "31.12",
-    },
-    {
-        weight: 70.4,
-        date: "1.01",
-    },
-    {
-        weight: 70.4,
-        date: "2.01",
-    },
-    {
-        weight: 70.4,
-        date: "3.01",
-    }
-]
+export default function Lines( {weights} ) {
+    const labels = weights.map(item => item.date);
+    const numbers = weights.map(item => item.weight);
 
-const labels = weights.map(item => item.date);
-const numbers = weights.map(item => item.weight);
-
-export const options = {
-    plugins: {
-        legend: {
-           display: false
-        }
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-        y: {
-            grid: {
-                color: 'transparent',
+    const options = {
+        plugins: {
+            legend: {
+            display: false
             },
-            suggestedMin: 50,
-            suggestedMax: 100,
-            ticks: {
-                color: 'transparent',
-            }
         },
-        x: {
-            grid: {
-                color: 'transparent',
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                display: false,
             },
-            ticks: {
-                color: 'transparent',
+            x: {
+                display: false,
             }
         }
     }
-}
   
-export const data = {
-    labels,
-    datasets: [
-      {
-        label: '',
-        data: numbers,
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-    ],
-};
+    const data = {
+        labels,
+        datasets: [
+        {
+            label: '',
+            data: numbers,
+            borderColor: '#E3AA40',
+            backgroundColor: '#E3AA40',
+        },
+        ],
+    };
 
-const dashes = {
-    top: {
-        dashClass: styles.top_dash,
-        labelClass: styles.top_label
-    },
-    bottom: {
-        dashClass: styles.bottom_dash,
-        labelClass: styles.bottom_label
+    const dashes = {
+        top: {
+            dashClass: styles.top_dash,
+            labelClass: styles.top_label
+        },
+        bottom: {
+            dashClass: styles.bottom_dash,
+            labelClass: styles.bottom_label
+        }
     }
-}
 
-export default function Lines() {
     return (
         <div className={styles.weight_chart_lines}>
-            <Dash dash={dashes.top}/>
-            <Line data={data} options={options}/>
-            <Dash dash={dashes.bottom}/>
+            <Dash dash={dashes.top} value="94.6"/>
+            <Line data={data} options={options} />
+            <Dash dash={dashes.bottom} value="70.0"/>
         </div>
     );
 }

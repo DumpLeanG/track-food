@@ -1,0 +1,17 @@
+@import "@/styles/variables";
+
+.weight_changes_list_item {
+    padding: 0px 15px;
+    &_box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 3px solid $white;
+        div {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+    }
+}

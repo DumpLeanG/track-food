@@ -21,7 +21,7 @@ const inputs = [
 
 export default function Inputs() {
     return (
-        <div className={styles.weight_inputs}>
+        <div className={styles.weight_form_inputs}>
             {inputs.map(input => {
                 return <Input key={input.label} {...input}/>;
             })}

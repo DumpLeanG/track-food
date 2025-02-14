@@ -1,11 +1,15 @@
-@import "../../../styles/variables.scss";
+@import "@/styles/variables.scss";
 
 .weight_chart_lines {
-    padding: 20px 0;
-    height: 360px;
+    padding: 40px 0;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    canvas {
+        z-index: 1;
+        margin: -10px -2px -7px;
+    }
 }
 
 .top_dash {
@@ -16,6 +20,14 @@
 
 .bottom_dash {
     width: 100%;
-    border-top: 3px dashed $green;
+    border-bottom: 3px dashed $green;
     display: block;
+}
+
+.top_label {
+    background: $red;
+}
+
+.bottom_label {
+    background: $green;
 }
