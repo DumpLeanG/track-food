@@ -1,5 +1,14 @@
+@import "@/styles/variables.scss";
+
 .diary_dates {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.diary_dates_arrow {
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: $shadow;
+    background: $white;
 }

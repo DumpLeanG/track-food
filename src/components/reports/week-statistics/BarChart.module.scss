@@ -1,0 +1,30 @@
+@import "@/styles/variables";
+
+.reports_statistics_chart {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    gap: 10px;
+    position: relative;
+    > span {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 40px;
+        border-top: 3px dashed $txt-color;
+    }
+    canvas {
+        height: 200px;
+        margin-left: -2px;
+        margin-right: -5px;
+    }
+    &_days {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        list-style: none;
+        li {
+            width: 165px;
+        }
+    }
+}

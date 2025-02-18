@@ -1,4 +1,4 @@
-import Diary from "../components/diary/Diary";
+import Diary from "@/components/diary/Diary";
 
 export default function DiaryPage() {
   return (

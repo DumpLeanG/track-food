@@ -1,5 +1,5 @@
 import styles from "./Product.module.scss";
-import Button from "../../buttons/Button";
+import Button from "@/components/buttons/Button";
 
 export default function Product() {
 

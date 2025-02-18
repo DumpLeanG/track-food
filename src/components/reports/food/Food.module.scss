@@ -1,0 +1,19 @@
+@import "@/styles/variables";
+
+.reports_food{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 15px;
+    background: $dwhite;
+    box-shadow: $shadow;
+    flex-direction: column;
+    &_title {
+        padding: 15px 30px;
+        border-radius: 15px;
+        background: $white;
+    }
+    button {
+        margin: 15px;
+        width: calc(100% - 30px);
+    }
+}

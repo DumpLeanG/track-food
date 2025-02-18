@@ -2,7 +2,7 @@
 
 import List from './List';
 import styles from "./Dates.module.scss";
-import Arrow from './Arrow';
+import Arrow from '../../buttons/Arrow';
 import { useState } from 'react';
 
 export default function Dates() {
@@ -17,9 +17,9 @@ export default function Dates() {
 
     return (
         <div className={styles.diary_dates}>
-            <Arrow direction="left" handleClick={handleLeftClick}/>
+            <Arrow direction="left" className={styles.diary_dates_arrow} handleClick={handleLeftClick}/>
             <List day={day}/>
-            <Arrow direction="right" handleClick={handleRightClick}/>
+            <Arrow direction="right" className={styles.diary_dates_arrow} handleClick={handleRightClick}/>
         </div>
     );
 }

@@ -1,0 +1,10 @@
+@import "@/styles/variables";
+
+.reports_week {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    border-radius: 15px;
+    background: $white;
+    box-shadow: $shadow;
+}

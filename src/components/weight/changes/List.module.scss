@@ -1,7 +1,7 @@
 .weight_changes_list {
     display: flex;
     flex-direction: column;
-    :last-child > div {
+    :last-child {
         border: none;
     }
 }

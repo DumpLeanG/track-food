@@ -1,9 +1,9 @@
 import styles from "./Arrow.module.scss";
 import Image from "next/image";
 
-export default function Arrow({ direction, handleClick }) {
+export default function Arrow({ direction, handleClick, className }) {
     return (
-        <button className={styles.diary_dates_arrow} onClick={handleClick}>
+        <button className={`${className} ${styles.arrow}`} onClick={handleClick}>
             <Image
                 src={`/${direction}-arrow.svg`}
                 alt="arrow"

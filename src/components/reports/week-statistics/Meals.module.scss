@@ -1,0 +1,71 @@
+@import "@/styles/variables";
+
+.reports_statistics_meals {
+    display: flex;
+    flex-direction: column;
+    &_head {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 30px;
+        background: $white;
+        border-radius: 15px;
+    }
+    &_list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        &_item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 15px;
+            border-bottom: 3px solid $white;
+            margin: 0 15px;
+            &_name {
+                gap: 10px;
+                display: flex;
+                align-items: center;
+                span {
+                    border-radius: 5px;
+                    width: 25px;
+                    height: 25px;
+                    border: 3px solid $dwhite;
+                }
+            }
+            &_calories {
+                display: flex;
+                gap: 40px;
+            }
+        }
+        :nth-child(1) {
+            :nth-child(1) {
+                span {
+                    background: $yellow;
+                }
+            }
+        }
+        :nth-child(2) {
+            :nth-child(1) {
+                span {
+                    background: $blue;
+                }
+            }
+        }
+        :nth-child(3) {
+            :nth-child(1) {
+                span {
+                    background: $dgreen;
+                }
+            }
+        }
+        :nth-child(4) {
+            :nth-child(1) {
+                span {
+                    background: $magenta;
+                }
+            }
+        }
+        :last-child {
+            border-bottom: none;
+        }
+    }
+}

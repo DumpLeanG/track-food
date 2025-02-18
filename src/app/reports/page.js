@@ -1,5 +1,7 @@
+import Reports from "@/components/reports/Reports";
+
 export default function ReportsPage() {
   return (
-    <div></div>
+    <Reports />
   );
 }

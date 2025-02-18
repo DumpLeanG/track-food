@@ -2,8 +2,8 @@
 
 import styles from "./Meal.module.scss";
 import Image from "next/image";
-import AddButton from "../../buttons/AddButton";
-import ExpandButton from "../../buttons/ExpandButton";
+import AddButton from "@/components/buttons/AddButton";
+import ExpandButton from "@/components/buttons/ExpandButton";
 import Product from "./Product";
 import { useState } from "react";
 
