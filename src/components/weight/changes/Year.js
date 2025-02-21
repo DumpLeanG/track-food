@@ -1,7 +1,7 @@
 import styles from "./Year.module.scss";
 
-export default function Year() {
+export default function Year({year}) {
     return (
-        <span className={styles.weight_changes_year}>2024</span>
+        <span className={styles.weight_changes_year}>{year}</span>
     );
 }

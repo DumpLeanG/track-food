@@ -4,4 +4,7 @@
     :last-child {
         border: none;
     }
+    li:has(+ span) {
+        border: none;
+    }
 }

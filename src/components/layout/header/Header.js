@@ -9,7 +9,7 @@ export default function Header() {
         <header className={styles.header}>
             <Layout>
                 <nav className={styles.header_nav}>
-                    <Link href="/">
+                    <Link href="/tracker">
                         <Image
                         className={styles.header_nav_logo}
                         src="/logo.svg"
@@ -42,7 +42,7 @@ export default function Header() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="#">
+                            <Link href="/">
                                 <Image
                                 src="/user.svg"
                                 alt="logo"

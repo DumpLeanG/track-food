@@ -41,3 +41,12 @@ input {
 .green_numbers {
   color: $green;
 }
+
+button {
+  border: none;
+  outline: none;
+  text-align: center;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}

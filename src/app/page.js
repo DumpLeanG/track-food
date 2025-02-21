@@ -1,7 +1,9 @@
-import Diary from "@/components/diary/Diary";
+import Auth from "@/components/auth/Auth";
 
-export default function DiaryPage() {
+export default function AuthPage() {
   return (
-    <Diary />
+    <main>
+      <Auth />
+    </main>
   );
 }

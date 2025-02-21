@@ -17,7 +17,6 @@ export default function Changes( {weights} ) {
 
     return (
         <div className={styles.weight_changes}>
-            <Year />
             <List weights={reversedWeights.slice(0, showedWeights)}/>
             <Button type="more" onClick={handleClick}/>
         </div>
