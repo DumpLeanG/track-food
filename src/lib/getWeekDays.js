@@ -1,7 +1,11 @@
 export function getWeekDays(day) {
     let currentDay = new Date(day);
     let week = [];
-    currentDay.setDate((currentDay.getDate() - currentDay.getDay() + 1));
+    if (currentDay.getDay() === 0) {
+        currentDay.setDate((currentDay.getDate() - currentDay.getDay() - 6));
+    } else {
+        currentDay.setDate((currentDay.getDate() - currentDay.getDay() + 1));
+    }
     for (let i = 0; i < 7; i++) {
         week.push(
             new Date(currentDay)  

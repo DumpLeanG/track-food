@@ -5,11 +5,13 @@ import styles from "./Reports.module.scss";
 import WeekStatistics from "./week-statistics/WeekStatistics";
 import Week from "./week/Week";
 import Food from "./food/Food";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getWeekDays } from "@/lib/getWeekDays";
+import { dayContext, setDayContext } from "@/lib/dayContext";
 
 export default function Reports() {
-    const [day, setDay] = useState(new Date());
+    const day = useContext(dayContext);
+    const setDay = useContext(setDayContext);
     const [week, setWeek] = useState("Текущая неделя");
     let currentDates = getWeekDays(day);
 

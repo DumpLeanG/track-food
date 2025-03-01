@@ -1,5 +1,5 @@
 import Button from '../buttons/Button';
-import Input from './Input';
+import Input from '../inputs/Input';
 
 export default function Login({className}) {
     return (

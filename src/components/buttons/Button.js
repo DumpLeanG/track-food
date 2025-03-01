@@ -7,7 +7,7 @@ export default function Button( {type, onClick} ) {
         
         case "delete":
             return (
-                <button type="submit" className={`${styles.button} ${styles.delete_btn}`} onClick={onClick}>Удалить</button>
+                <button type="submit" className={`${styles.button} ${styles.red_btn}`} onClick={onClick}>Удалить</button>
             )
         case "save":
             return (
@@ -25,6 +25,14 @@ export default function Button( {type, onClick} ) {
             return (
                 <button type="submit" className={styles.button} onClick={onClick}>Зарегистрироваться</button>
             )
+        case "exit":
+            return (
+                <button type="submit" className={`${styles.button} ${styles.red_btn}`} onClick={onClick}>Выйти</button>
+            )
+        case "cancel":
+        return (
+            <button type="button" className={`${styles.button} ${styles.red_btn}`} onClick={onClick}>Отменить</button>
+        )
         default:
             return (
                 <button type="submit" className={styles.button} onClick={onClick}>Изменить</button>

@@ -5,15 +5,12 @@
     flex-direction: column;
     gap: 10px;
     position: relative;
-    div {
+    input {
+        text-align: center;
         border-radius: 15px;
         padding: 15px;
         background: $dwhite;
         width: 290px;
         position: relative;
-        input {
-            text-align: center;
-            width: 100%;
-        }   
-    }
+    }   
 }

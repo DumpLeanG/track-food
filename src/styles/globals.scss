@@ -49,4 +49,50 @@ button {
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
+  background: none;
+}
+
+.react-calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: $txt-color;
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    &__label {
+      color: inherit;
+      font-weight: 700;
+    }
+    &__label::first-letter {
+      text-transform: capitalize;
+    }
+  }
+  &__month-view {
+    > div > div {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    &__weekdays, &__days  {
+      gap: 15px 40px;
+      &__weekday, &__day {
+        flex: none !important;
+        width: 21px;
+      }
+      &__weekday {
+        color: $grey;
+        abbr {
+          text-decoration: none;
+        }
+      }
+      &__day--neighboringMonth {
+        opacity: 0.7;
+      }
+    }
+  }
+  
+  &__tile--active {
+    color: $green;
+  }
 }

@@ -1,0 +1,27 @@
+@import "@/styles/variables";
+
+.user {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 15px 0 15px 15px;
+    width: 450px;
+    background: $white;
+    top: 45px;
+    gap: 10px;
+    &_item {
+        &_info {
+            color: $green;
+        }
+    }
+    input {
+        padding: 15px;
+        border-radius: 15px;
+        background: $dwhite;
+    }
+    button {
+        margin-top: 5px;
+    }
+}
