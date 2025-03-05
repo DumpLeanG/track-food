@@ -1,10 +1,10 @@
 import styles from "./AddButton.module.scss";
 import Image from "next/image";
 
-export default function AddButton() {
+export default function AddButton( {handleClick}) {
 
     return (
-        <button className={styles.add_btn}>
+        <button className={styles.add_btn} onClick={handleClick}>
             <Image
                 src="/add.svg"
                 alt="add-button"

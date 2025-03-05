@@ -6,6 +6,7 @@ import AddButton from "@/components/buttons/AddButton";
 import ExpandButton from "@/components/buttons/ExpandButton";
 import Product from "./Product";
 import { useState } from "react";
+import AddingFood from "./adding-food/AddingFood";
 
 function renderMealType(type) {
     switch (type) {
@@ -21,7 +22,9 @@ function renderMealType(type) {
 }
 
 export default function Meal( { type } ) {
-    const [isActive, setIsActive] = useState(false)
+    const [isActive, setIsActive] = useState(false);
+    const [isAdding, setIsAdding] = useState(false);
+
     return (
         <div className={styles.diary_meals_item} key={type}>
             <div className={styles.diary_meals_item_head}>
@@ -36,7 +39,7 @@ export default function Meal( { type } ) {
                     />
                     <span>{renderMealType(type)}</span>
                 </div>
-                <AddButton />
+                <AddButton handleClick={() => setIsAdding(!isAdding)}/>
             </div>
             <div className={styles.diary_meals_item_numbers}>
                 <div className={styles.diary_meals_item_numbers_pfc}>
@@ -55,6 +58,7 @@ export default function Meal( { type } ) {
                     <Product />
                 </ul>
             }
+            {isAdding && <AddingFood handleOutsideClick={setIsAdding}/>}
         </div>
     );
 }

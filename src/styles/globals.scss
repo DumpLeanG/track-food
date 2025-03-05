@@ -52,11 +52,16 @@ button {
   background: none;
 }
 
+input::placeholder {
+  color: $grey;
+}
+
 .react-calendar {
   display: flex;
   flex-direction: column;
   gap: 15px;
   color: $txt-color;
+  text-align: center;
   &__navigation {
     display: flex;
     justify-content: space-between;
@@ -87,7 +92,7 @@ button {
         }
       }
       &__day--neighboringMonth {
-        opacity: 0.7;
+        color: $grey;
       }
     }
   }
@@ -95,4 +100,17 @@ button {
   &__tile--active {
     color: $green;
   }
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: $white;
+  border-radius: 0 0 15px 0;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $green;
+  border-radius: 15px;
+  border: 3px solid $white;
 }

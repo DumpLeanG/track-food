@@ -1,0 +1,42 @@
+@import "@/styles/variables";
+
+.adding_block_search {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    &_input {
+        position: relative;
+        padding: 15px;
+        input {
+            padding: 15px;
+            border-radius: 15px;
+            background: $dwhite;
+            width: 100%;
+        }
+        img {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+        }
+    }
+}
+
+.adding_block_list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    overflow-y: auto;
+    &_item {
+        padding: 15px 0;
+        margin: 0 15px;
+        border-bottom: 3px solid $dwhite;
+        display: flex;
+        justify-content: space-between;
+        span {
+            width: 390px;
+        }
+    }
+    :last-child {
+        border-bottom: none;
+    }
+}

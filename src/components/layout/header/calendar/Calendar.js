@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./CalendarWindow.module.scss";
+import styles from "./Calendar.module.scss";
 import Calendar from "react-calendar";
 import Image from "next/image";
 
