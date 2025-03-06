@@ -31,7 +31,7 @@ export default function Search() {
             </div>
             <ul className={styles.adding_block_list}>
                 {items.map(item => 
-                    <Item key={item.name} name={item.name} className={styles.adding_block_list_item} type="searched"/>
+                    <Item key={item.name} item={item} className={styles.adding_block_list_item} type="searched"/>
                 )}
             </ul>
         </div>

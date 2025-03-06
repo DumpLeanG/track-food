@@ -1,0 +1,64 @@
+@import "@/styles/variables";
+
+.parameters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 21, 0, 0.25);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &_block {
+        width: 450px;
+        display: flex;
+        flex-direction: column;
+        background: $white;
+        border-radius: 15px;
+        align-items: center;
+        padding: 15px;
+        gap: 15px;
+        &_title {
+            padding-bottom: 15px;
+            border-bottom: 3px solid $dwhite;
+            width: 100%;
+            text-align: center;
+        }
+        &_element {
+            display: flex;
+            width: 100%;
+            gap: 15px;
+            align-items: center;
+            position: relative;
+            &_input {
+                width: 100%;
+                padding: 15px;
+                border-radius: 15px;
+                background: $dwhite;
+            }
+            &_expand {
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                pointer-events: none;
+            }
+        }
+        &_info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            list-style: none;
+            justify-content: space-between;
+            text-align: center;
+            &_item {
+                padding: 15px;
+                border-radius: 15px;
+                background: $dwhite;
+                width: 201px;
+            }
+        }
+    }
+}

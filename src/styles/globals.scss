@@ -30,12 +30,17 @@ h2 {
   font-weight: 700;
 }
 
-input {
+input, select {
   font-family: inherit;
   font-size: inherit;
   border: none;
   outline: none;
   background: none;
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
 
 .green_numbers {

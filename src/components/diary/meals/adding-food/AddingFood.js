@@ -1,11 +1,12 @@
 "use client";
 
 import styles from "./AddingFood.module.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Arrow from "@/components/buttons/Arrow";
 import Search from "./Search";
 import UsedFood from "./UsedFood";
 import { useOutsideClick } from "@/lib/useOutsideClick";
+import { setOpenedContext } from "@/lib/foodContext";
 
 const categories = [
     {id: 0, name: "search", text: "Поиск еды"},
@@ -14,10 +15,12 @@ const categories = [
 ]
 
 
-export default function AddingFood( {handleOutsideClick} ) {
+export default function AddingFood() {
     const [category, setCategory] = useState(categories[0]);
+    const setOpened = useContext(setOpenedContext);
+
     const ref = useOutsideClick(() => {
-        handleOutsideClick(false);
+        setOpened(null);
     });
     function handleLeftClick() {
         if (category.id === 0) {

@@ -7,6 +7,8 @@ import ExpandButton from "@/components/buttons/ExpandButton";
 import Product from "./Product";
 import { useState } from "react";
 import AddingFood from "./adding-food/AddingFood";
+import { setOpenedContext, foodContext, setFoodContext } from "@/lib/foodContext";
+import FoodParameters from "./food-parameters/FoodParameters";
 
 function renderMealType(type) {
     switch (type) {
@@ -23,7 +25,8 @@ function renderMealType(type) {
 
 export default function Meal( { type } ) {
     const [isActive, setIsActive] = useState(false);
-    const [isAdding, setIsAdding] = useState(false);
+    const [opened, setOpened] = useState(null);
+    const [food, setFood] = useState(null);
 
     return (
         <div className={styles.diary_meals_item} key={type}>
@@ -39,7 +42,7 @@ export default function Meal( { type } ) {
                     />
                     <span>{renderMealType(type)}</span>
                 </div>
-                <AddButton handleClick={() => setIsAdding(!isAdding)}/>
+                <AddButton handleClick={() => setOpened("adding")}/>
             </div>
             <div className={styles.diary_meals_item_numbers}>
                 <div className={styles.diary_meals_item_numbers_pfc}>
@@ -58,7 +61,22 @@ export default function Meal( { type } ) {
                     <Product />
                 </ul>
             }
-            {isAdding && <AddingFood handleOutsideClick={setIsAdding}/>}
+            {opened === "adding" 
+            ? <setOpenedContext.Provider value={setOpened}>
+                <setFoodContext.Provider value={setFood}>
+                    <AddingFood/>
+                </setFoodContext.Provider>
+            </setOpenedContext.Provider>
+            :(opened === "parameters" && 
+            <setOpenedContext.Provider value={setOpened}>
+                <setFoodContext.Provider value={setFood}>
+                    <foodContext.Provider value={food}>
+                        <FoodParameters/>
+                    </foodContext.Provider>
+                </setFoodContext.Provider>
+            </setOpenedContext.Provider>)
+            }
+
         </div>
     );
 }
