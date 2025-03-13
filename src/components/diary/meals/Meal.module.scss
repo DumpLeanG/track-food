@@ -42,7 +42,10 @@
         }
     }
     &_products {
+        display: flex;
+        flex-direction: column;
         list-style: none;
         padding: 15px;
+        gap: 15px
     }
 }

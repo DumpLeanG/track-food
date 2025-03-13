@@ -14,6 +14,7 @@ import { useOutsideClick } from "@/lib/useOutsideClick";
 
 export default function Header( {day, setDay} ) {
     const [shown, setShown] = useState(null);
+    const [apiResponse, setApiResponse] = useState("Loading...");
     const ref = useOutsideClick(() => {
         setShown(null);
     });
@@ -65,7 +66,7 @@ export default function Header( {day, setDay} ) {
                                 height={25}
                                 />
                             </button>
-                            {(shown === "user")? <User /> : null}
+                            {(shown === "user")? <User apiResponse={apiResponse} setApiResponse={setApiResponse}/> : null}
                         </li>
                     </ul>
                 </nav>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import AddButton from "@/components/buttons/AddButton";
 import ExpandButton from "@/components/buttons/ExpandButton";
 import Product from "./Product";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import AddingFood from "./adding-food/AddingFood";
 import { setOpenedContext, foodContext, setFoodContext } from "@/lib/foodContext";
 import FoodParameters from "./food-parameters/FoodParameters";
@@ -23,10 +23,30 @@ function renderMealType(type) {
     }
 }
 
+const products = [
+    {name: "Индилайт Кампана Ветчина из Грудки Индейки"},
+    {name: "Оладьи"},
+    {name: "Рис вареный"},
+    {name: "Кофе"},
+    {name: "Банан"},
+    {name: "Огурец"},
+    {name: "Томаты"},
+]
+
+/*fetch("https://platform.fatsecret.com/rest/food/v4?food_id=33691&")
+.then(response => console.log(response))
+.catch(e => console.error(e));*/
+
 export default function Meal( { type } ) {
     const [isActive, setIsActive] = useState(false);
     const [opened, setOpened] = useState(null);
     const [food, setFood] = useState(null);
+
+    const openedRef = useRef();
+    
+    useEffect(() => {
+        openedRef.current = opened;
+    },[opened])
 
     return (
         <div className={styles.diary_meals_item} key={type}>
@@ -58,7 +78,13 @@ export default function Meal( { type } ) {
             {
                 isActive && 
                 <ul className={styles.diary_meals_item_products}>
-                    <Product />
+                    <setOpenedContext.Provider value={setOpened}>
+                        <setFoodContext.Provider value={setFood}>
+                        {products.map((product) => (
+                            <Product key={product.name} product={product}/>
+                        ))}
+                        </setFoodContext.Provider>
+                    </setOpenedContext.Provider>
                 </ul>
             }
             {opened === "adding" 
@@ -71,7 +97,7 @@ export default function Meal( { type } ) {
             <setOpenedContext.Provider value={setOpened}>
                 <setFoodContext.Provider value={setFood}>
                     <foodContext.Provider value={food}>
-                        <FoodParameters/>
+                        <FoodParameters previous={openedRef.current}/>
                     </foodContext.Provider>
                 </setFoodContext.Provider>
             </setOpenedContext.Provider>)

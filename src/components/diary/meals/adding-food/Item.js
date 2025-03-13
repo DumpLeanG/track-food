@@ -16,7 +16,7 @@ export default function Item( {item, className, type } ) {
 
     return (
         <li className={className}>
-            <span>{item.name}</span>
+            <span>{item.food_name} {(item.food_type === 'Brand' && `(${item.brand_name})`)}</span>
             {(type === "searched") ? <Image src="/searched.svg" alt="searched-icon" width={18} height={18}/> : <AddButton handleClick={handleClick}/>}
         </li>
     );

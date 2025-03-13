@@ -39,4 +39,34 @@
     :last-child {
         border-bottom: none;
     }
+    &_txt {
+        padding: 15px;
+        color: $red;
+    }
+    &_container {
+        height: 350px; // Фиксированная высота
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &_load {
+            border: 4px solid $dwhite; /* Светлый цвет */
+            border-top: 4px solid $green; /* Синий цвет */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-top: -20px;/* Анимация */
+        }
+    }
 }
+
+  
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+  
