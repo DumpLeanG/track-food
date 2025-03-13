@@ -29,14 +29,14 @@ export default function Search() {
 
         try {
             // Получаем токен
-            const tokenResponse = await fetch('http://localhost:3000/api/get-token', {
+            const tokenResponse = await fetch('/api/get-token', {
                 method: 'POST',
             });
             const tokenData = await tokenResponse.json();
             const accessToken = tokenData.access_token;
 
             // Ищем еду
-            const foodResponse = await fetch('http://localhost:3000/api/search-food', {
+            const foodResponse = await fetch('/api/search-food', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
