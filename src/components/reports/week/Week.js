@@ -1,5 +1,5 @@
 import styles from "./Week.module.scss";
-import Arrow from "@/components/buttons/Arrow";
+import Arrow from "@/components/layout/buttons/Arrow";
 
 export default function Week({handleLeftClick, handleRightClick, week}) {
     return (

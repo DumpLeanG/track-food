@@ -1,6 +1,6 @@
 import styles from "./Form.module.scss";
 import Inputs from "./Inputs";
-import Button from "@/components/buttons/Button";
+import Button from "@/components/layout/buttons/Button";
 
 export default function Form() {
     return (

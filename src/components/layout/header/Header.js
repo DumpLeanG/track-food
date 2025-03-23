@@ -8,13 +8,14 @@ import Link from "next/link";
 import User from "./user/User";
 import Calendar from "./calendar/Calendar";
 import Notifications from "./notifications/Notifications";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useOutsideClick } from "@/lib/useOutsideClick";
+import { supabase } from "@/lib/supabaseClient";
 
 
-export default function Header( {day, setDay} ) {
+export default function Header() {
     const [shown, setShown] = useState(null);
-    const [apiResponse, setApiResponse] = useState("Loading...");
+
     const ref = useOutsideClick(() => {
         setShown(null);
     });
@@ -35,7 +36,7 @@ export default function Header( {day, setDay} ) {
                     </Link>
                     <NavLinks className={styles.header_nav_list} selectedLink={styles.current_link}/>
                     <ul className={styles.header_nav_list}>
-                        <li className={(shown === "notifications")? styles.activated_item : null} ref={(shown === "notifications")? ref : null}>
+                        <li className={(shown === "notifications") ? styles.activated_item : null} ref={(shown === "notifications") ? ref : null}>
                             <button className={styles.header_nav_list_item_btn} onClick={() => setShown("notifications")} >
                                 <Image
                                 src="/notifications.svg"
@@ -44,9 +45,9 @@ export default function Header( {day, setDay} ) {
                                 height={25}
                                 />
                             </button>
-                            {(shown === "notifications")? <Notifications /> : null}
+                            {(shown === "notifications") && <Notifications />}
                         </li>
-                        <li className={(shown === "calendar")? styles.activated_item : null} ref={(shown === "calendar")? ref : null}>
+                        <li className={(shown === "calendar") ? styles.activated_item : null} ref={(shown === "calendar") ? ref : null}>
                             <button className={styles.header_nav_list_item_btn} onClick={() => setShown("calendar")} >
                                 <Image
                                 src="/calendar.svg"
@@ -55,9 +56,9 @@ export default function Header( {day, setDay} ) {
                                 height={25}
                                 />
                             </button>
-                            {(shown === "calendar")? <Calendar day={day} setDay={setDay} /> : null}
+                            {(shown === "calendar") && <Calendar />}
                         </li>
-                        <li className={(shown === "user")? styles.activated_item : null} ref={(shown === "user")? ref : null}>
+                        <li className={(shown === "user") ? styles.activated_item : null} ref={(shown === "user") ? ref : null}>
                             <button className={styles.header_nav_list_item_btn} onClick={() => setShown("user")} >
                                 <Image
                                 src="/user.svg"
@@ -66,7 +67,8 @@ export default function Header( {day, setDay} ) {
                                 height={25}
                                 />
                             </button>
-                            {(shown === "user")? <User apiResponse={apiResponse} setApiResponse={setApiResponse}/> : null}
+                            {
+                            (shown === "user") && <User/>}
                         </li>
                     </ul>
                 </nav>

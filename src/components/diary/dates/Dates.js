@@ -2,13 +2,12 @@
 
 import List from './List';
 import styles from "./Dates.module.scss";
-import Arrow from '../../buttons/Arrow';
+import Arrow from '../../layout/buttons/Arrow';
 import { useContext } from 'react';
-import { dayContext, setDayContext } from '@/lib/dayContext';
+import { DayContext } from '@/lib/DayContext';
 
 export default function Dates() {
-    const day = useContext(dayContext);
-    const setDay = useContext(setDayContext);
+    const {day, setDay} = useContext(DayContext);
     function handleLeftClick() {
         setDay(new Date(day.setDate(day.getDate() - 7)));
     }

@@ -1,6 +1,6 @@
 import styles from "./Food.module.scss";
 import List from "./List";
-import Button from "@/components/buttons/Button";
+import Button from "@/components/layout/buttons/Button";
 
 export default function Food() {
     return (

@@ -1,13 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import AddButton from "@/components/buttons/AddButton";
-import { setOpenedContext, setFoodContext } from "@/lib/foodContext";
+import AddButton from "@/components/layout/buttons/AddButton";
+import { FoodContext } from "@/lib/FoodContext";
 import { useContext } from "react";
 
 export default function Item( {item, className, type } ) {
-    const setOpened = useContext(setOpenedContext);
-    const setFood = useContext(setFoodContext);
+    const {setFood, setOpened } = useContext(FoodContext);
 
     function handleClick() {
         setOpened("parameters");

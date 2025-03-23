@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function POST(req) {
   try {
     // Получаем данные из тела запроса
-    const { accessToken, query } = await req.json();
+    const { accessToken, query, page } = await req.json();
 
     // Формируем URL с параметрами
     const url = new URL('https://platform.fatsecret.com/rest/foods/search');
@@ -13,6 +13,7 @@ export async function POST(req) {
     url.searchParams.append('max_results', '50');
     url.searchParams.append('include_sub_categories', 'true');
     url.searchParams.append('flag_default_serving', 'true');
+    url.searchParams.append('page_number', page);
 
     // Отправляем запрос к Fatsecret API
     const response = await fetch(url.toString(), {

@@ -22,8 +22,8 @@ export default function Notifications() {
     return (
         <div className={styles.notifications}>
             <div className={styles.notifications_head}>
-                <span className={`${styles.notifications_head_item} ${(activeItem) === "Inbox" ? styles.active_item : null}`} onClick={() => setActiveItem("Inbox")}>Входящие</span>
-                <span className={`${styles.notifications_head_item} ${(activeItem) === "News" ? styles.active_item : null}`} onClick={() => setActiveItem("News")}>Что нового</span>
+                <span className={`${styles.notifications_head_item} ${(activeItem) === "Inbox" && styles.active_item}`} onClick={() => setActiveItem("Inbox")}>Входящие</span>
+                <span className={`${styles.notifications_head_item} ${(activeItem) === "News" && styles.active_item}`} onClick={() => setActiveItem("News")}>Что нового</span>
             </div>
             <ul className={styles.notifications_list}>
                 {(activeItem === "Inbox") 

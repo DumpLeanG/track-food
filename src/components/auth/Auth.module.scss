@@ -28,6 +28,9 @@
                 cursor: pointer;
             }
         }
+        &_txt {
+            padding: 15px 15px 0 15px;
+        }
         &_box {
             display: flex;
             flex-direction: column;

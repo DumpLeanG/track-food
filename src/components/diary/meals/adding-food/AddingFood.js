@@ -2,11 +2,11 @@
 
 import styles from "./AddingFood.module.scss";
 import { useContext, useState } from "react";
-import Arrow from "@/components/buttons/Arrow";
+import Arrow from "@/components/layout/buttons/Arrow";
 import Search from "./Search";
 import UsedFood from "./UsedFood";
 import { useOutsideClick } from "@/lib/useOutsideClick";
-import { setOpenedContext } from "@/lib/foodContext";
+import { FoodContext } from "@/lib/FoodContext";
 
 const categories = [
     {id: 0, name: "search", text: "Поиск еды"},
@@ -17,7 +17,7 @@ const categories = [
 
 export default function AddingFood() {
     const [category, setCategory] = useState(categories[0]);
-    const setOpened = useContext(setOpenedContext);
+    const { setOpened } = useContext(FoodContext);
 
     const ref = useOutsideClick(() => {
         setOpened(null);

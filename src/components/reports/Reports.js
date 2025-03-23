@@ -7,11 +7,10 @@ import Week from "./week/Week";
 import Food from "./food/Food";
 import { useState, useEffect, useContext } from "react";
 import { getWeekDays } from "@/lib/getWeekDays";
-import { dayContext, setDayContext } from "@/lib/dayContext";
+import { DayContext } from "@/lib/DayContext";
 
 export default function Reports() {
-    const day = useContext(dayContext);
-    const setDay = useContext(setDayContext);
+    const { day, setDay } = useContext(DayContext);
     const [week, setWeek] = useState("Текущая неделя");
     let currentDates = getWeekDays(day);
 

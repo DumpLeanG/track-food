@@ -1,7 +1,7 @@
 'use client';
 
 import styles from "./Input.module.scss";
-import NumberInput from "@/components/inputs/NumberInput";
+import NumberInput from "@/components/layout/inputs/NumberInput";
 
 export default function Input( {label, defaultValue} ) {
 

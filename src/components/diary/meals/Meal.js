@@ -1,46 +1,32 @@
-"use client";
-
 import styles from "./Meal.module.scss";
 import Image from "next/image";
-import AddButton from "@/components/buttons/AddButton";
-import ExpandButton from "@/components/buttons/ExpandButton";
+import AddButton from "@/components/layout/buttons/AddButton";
+import ExpandButton from "@/components/layout/buttons/ExpandButton";
 import Product from "./Product";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import AddingFood from "./adding-food/AddingFood";
-import { setOpenedContext, foodContext, setFoodContext } from "@/lib/foodContext";
+import { FoodContext } from "@/lib/FoodContext";
 import FoodParameters from "./food-parameters/FoodParameters";
-
-function renderMealType(type) {
-    switch (type) {
-        case "breakfast": 
-            return "Завтрак"
-        case "lunch": 
-            return "Обед"
-        case "dinner": 
-            return "Ужин"
-        default: 
-            return "Перекус"
-    }
-}
-
-const products = [
-    {name: "Индилайт Кампана Ветчина из Грудки Индейки"},
-    {name: "Оладьи"},
-    {name: "Рис вареный"},
-    {name: "Кофе"},
-    {name: "Банан"},
-    {name: "Огурец"},
-    {name: "Томаты"},
-]
-
-/*fetch("https://platform.fatsecret.com/rest/food/v4?food_id=33691&")
-.then(response => console.log(response))
-.catch(e => console.error(e));*/
+import { DayContext } from "@/lib/DayContext";
+import { LoadingContext } from "@/lib/LoadingContext";
+import { UserContext } from "@/lib/UserContext";
+import { EatenFoodContext } from "@/lib/EatenFoodContext";
 
 export default function Meal( { type } ) {
     const [isActive, setIsActive] = useState(false);
     const [opened, setOpened] = useState(null);
     const [food, setFood] = useState(null);
+    const { day } = useContext(DayContext);
+    const mealsLoading = useContext(LoadingContext);
+    const { user } = useContext(UserContext);
+    const { eatenFood, setEatenFood, fetchEatenFood, setIsLoading, isLoading } = useContext(EatenFoodContext);
+    const filteredFood = eatenFood.filter((food) => food.date === `${day.getFullYear()}-${day.getMonth() + 1 < 10 && '0'}${day.getMonth() + 1}-${day.getDate()}` && food.meal_id === type.id);
+    const filteredFoodInfo = {
+        proteins: filteredFood.reduce((sum, food) => sum + food.proteins, 0),
+        fats: filteredFood.reduce((sum, food) => sum + food.fats, 0),
+        carbohydrates: filteredFood.reduce((sum, food) => sum + food.carbohydrates, 0),
+        calories: filteredFood.reduce((sum, food) => sum + food.calories, 0)
+    }
 
     const openedRef = useRef();
     
@@ -48,60 +34,79 @@ export default function Meal( { type } ) {
         openedRef.current = opened;
     },[opened])
 
+    const handleDeleteProduct = () => {
+        async function fetchData() {
+            setIsLoading(true);
+            const result = await fetchEatenFood(user);
+            setEatenFood(result);
+            setIsLoading(false);
+        }
+        fetchData();
+    };
+
+    const handleAddProduct = () => {
+        async function fetchData() {
+            setIsLoading(true);
+            const result = await fetchEatenFood(user);
+            setEatenFood(result);
+            setIsLoading(false);
+        }
+        fetchData();
+    }
+
     return (
         <div className={styles.diary_meals_item} key={type}>
             <div className={styles.diary_meals_item_head}>
+                {!mealsLoading ? <>
                 <div className={styles.diary_meals_item_head_name}>
-                    <Image
-                        className={styles.header_nav_logo}
-                        src={`/${type}.svg`}
-                        alt={type}
-                        width={20}
-                        height={20}
-                        priority
-                    />
-                    <span>{renderMealType(type)}</span>
+                        <Image
+                            src={`/${type.name === "Завтрак" ? "breakfast" : (type.name === "Обед" ? "lunch" : (type.name === "Ужин" ? "dinner" : (type.name === "Перекус" && "snack")))}.svg`}
+                            alt={`/${type.name === "Завтрак" ? "breakfast" : (type.name === "Обед" ? "lunch" : (type.name === "Ужин" ? "dinner" : (type.name === "Перекус" && "snack")))}`}
+                            width={20}
+                            height={20}
+                            priority
+                        /> 
+                        <span>{type.name}</span>
                 </div>
                 <AddButton handleClick={() => setOpened("adding")}/>
+                </>
+                : <>
+                    <div className={styles.diary_meals_item_head_name_load}></div>
+                </>}
             </div>
             <div className={styles.diary_meals_item_numbers}>
-                <div className={styles.diary_meals_item_numbers_pfc}>
-                    <span>50.92</span>
-                    <span>24.05</span>
-                    <span>34.08</span>
-                </div>
-                <div className={styles.diary_meals_item_numbers_calories}>
-                    <span>562</span>
-                    <ExpandButton isActive={isActive} handleClick={() => setIsActive(!isActive)}/>
-                </div>
+                {!isLoading ? <>
+                    <div className={styles.diary_meals_item_numbers_pfc}>
+                        <span>{Math.round(filteredFoodInfo.proteins * 100) / 100}</span>
+                        <span>{Math.round(filteredFoodInfo.fats * 100) / 100}</span>
+                        <span>{Math.round(filteredFoodInfo.carbohydrates * 100) / 100}</span>
+                    </div>
+                    <div className={styles.diary_meals_item_numbers_calories}>
+                        <span>{Math.round(filteredFoodInfo.calories * 100) / 100}</span>
+                        <ExpandButton isActive={isActive} handleClick={() => setIsActive(!isActive)}/>
+                    </div>
+                </>
+                : <div className={styles.diary_meals_item_head_name_load}></div>}
             </div>
             {
                 isActive && 
                 <ul className={styles.diary_meals_item_products}>
-                    <setOpenedContext.Provider value={setOpened}>
-                        <setFoodContext.Provider value={setFood}>
-                        {products.map((product) => (
-                            <Product key={product.name} product={product}/>
+                    <FoodContext.Provider value={{food, setFood, setOpened}}>
+                        {filteredFood?.map((product) => (
+                            <Product key={product.id} product={product} onDelete={handleDeleteProduct}/>
                         ))}
-                        </setFoodContext.Provider>
-                    </setOpenedContext.Provider>
+                    </FoodContext.Provider>
                 </ul>
             }
             {opened === "adding" 
-            ? <setOpenedContext.Provider value={setOpened}>
-                <setFoodContext.Provider value={setFood}>
-                    <AddingFood/>
-                </setFoodContext.Provider>
-            </setOpenedContext.Provider>
-            :(opened === "parameters" && 
-            <setOpenedContext.Provider value={setOpened}>
-                <setFoodContext.Provider value={setFood}>
-                    <foodContext.Provider value={food}>
-                        <FoodParameters previous={openedRef.current}/>
-                    </foodContext.Provider>
-                </setFoodContext.Provider>
-            </setOpenedContext.Provider>)
-            }
+                ? <FoodContext.Provider value={{food, setFood, setOpened}}>
+                        <AddingFood/>
+                </FoodContext.Provider>
+            : (opened === "parameters" && 
+                <FoodContext.Provider value={{food, setFood, setOpened}}>
+                    <FoodParameters previous={openedRef.current} mealId={type.id} onUpdate={handleAddProduct}/>
+                </FoodContext.Provider>
+            )}
 
         </div>
     );

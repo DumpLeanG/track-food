@@ -2,15 +2,34 @@ $bg-color: #F6F5F3;
 $txt-color: #001500;
 $dwhite: #F0F0F0;
 $white: #FEFEFE;
-$green: #54AC5A;
+$green: #54ac5a;
 $dgreen: #3F972E;
 $red: #C13C3C;
 $grey: #3A4F3A;
-$blue: rgba(43, 122, 195, 1);
-$magenta: rgba(209, 52, 139, 1);
-$yellow: rgba(227, 170, 64, 1);
+$blue: #2B7AC3;
+$magenta: #D1348B;
+$yellow: #E3AA40;
+$mix-purple: #ac54a6;
 
 $shadow: 4px 4px 20px rgba(0, 21, 0, 0.25);
 $invert-shadow: -4px -4px 20px rgba(0, 21, 0, 0.25);
 
 $filter-from-black: invert(50%) sepia(84%) saturate(274%) hue-rotate(74deg) brightness(98%) contrast(94%);
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+:export {
+    red: $red;
+    green: $green;
+    blue: $blue;
+    magenta: $magenta;
+    yellow: $yellow;
+    mixPurple: $mix-purple;
+}

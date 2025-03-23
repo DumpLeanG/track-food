@@ -2,7 +2,7 @@
 
 import styles from "./Changes.module.scss";
 import Year from "./Year";
-import Button from "@/components/buttons/Button";
+import Button from "@/components/layout/buttons/Button";
 import List from "./List";
 import { useState } from "react";
 

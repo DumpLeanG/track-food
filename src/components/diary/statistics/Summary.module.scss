@@ -19,8 +19,15 @@
         &_fill {
             padding: 5px;
             border-radius: 10px;
-            background: $green;
-            color: $white;
+            mix-blend-mode: difference;
+            span {
+                white-space: nowrap;
+                color: $mix-purple;
+                mix-blend-mode: difference;
+                width: 540px;
+                display: flex;
+                justify-content: center;
+            }
         }
     }
     &_text {
