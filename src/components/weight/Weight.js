@@ -1,3 +1,5 @@
+"use client";
+
 import Layout from "../layout/Layout";
 import styles from "./Weight.module.scss";
 import Form from "./form/Form";

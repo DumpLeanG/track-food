@@ -14,8 +14,8 @@ export default function Summary() {
     return (
         <div className={styles.diary_statistics_summary}>
             <div className={styles.diary_statistics_summary_line}>
-                <div className={styles.diary_statistics_summary_line_fill} style={{width: `${5.4 * (user?.user_metadata?.rda / filteredFoodCalories * 100) || 0}px`, background: user?.user_metadata.rda && styles.mixPurple}}>
-                    <span>{Math.round(user?.user_metadata?.rda / filteredFoodCalories * 100 * 100) / 100 || 0}% от РСК</span>
+                <div className={styles.diary_statistics_summary_line_fill} style={{width: `${5.4 * (filteredFoodCalories / user?.user_metadata?.rda * 100) || 0}px`, background: (user?.user_metadata.rda && filteredFoodCalories) && styles.mixPurple}}>
+                    <span>{Math.round(filteredFoodCalories / user?.user_metadata?.rda * 100 * 100) / 100 || 0}% от РСК</span>
                 </div>
             </div>
             <h2>Сводка</h2>
@@ -23,7 +23,7 @@ export default function Summary() {
                 <p>Употреблено калорий <span>{filteredFoodCalories}</span></p>
             </div>
             <div className={styles.diary_statistics_summary_text}>
-                <p>Осталось калорий <span>{Math.round(user?.user_metadata?.rda - filteredFoodCalories* 100) / 100 || 0}</span></p>
+                <p>Осталось калорий <span>{Math.round((user?.user_metadata?.rda - filteredFoodCalories) * 100) / 100 || 0}</span></p>
             </div>
             <hr />
             <div className={styles.diary_statistics_summary_text}>

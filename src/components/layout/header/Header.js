@@ -8,9 +8,8 @@ import Link from "next/link";
 import User from "./user/User";
 import Calendar from "./calendar/Calendar";
 import Notifications from "./notifications/Notifications";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useOutsideClick } from "@/lib/useOutsideClick";
-import { supabase } from "@/lib/supabaseClient";
 
 
 export default function Header() {

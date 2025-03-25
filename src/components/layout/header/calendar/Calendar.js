@@ -3,7 +3,8 @@
 import styles from "./Calendar.module.scss";
 import Calendar from "react-calendar";
 import Image from "next/image";
-
+import { DayContext } from "@/lib/DayContext";
+import { useContext } from "react";
 
 const options = {
     view: "month",
@@ -15,7 +16,9 @@ const options = {
     nextLabel: <Image src="/right-arrow.svg" width="14" height="14" alt="right-calendar-arrow"/>,
 }
   
-export default function CalendarWindow( {day, setDay} ) {
+export default function CalendarWindow() {
+    const { day, setDay } = useContext(DayContext);
+
     return (
         <div className={styles.calendar}>
             <Calendar {...options} onChange={setDay} value={day}/>
