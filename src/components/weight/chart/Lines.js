@@ -14,6 +14,9 @@ import {
     defaults,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { UserContext } from "@/lib/UserContext";
+import { useContext } from "react";
+import { WeightsContext } from "@/lib/WeightsContext";
 
 ChartJS.register(
     CategoryScale,
@@ -22,24 +25,45 @@ ChartJS.register(
     LineElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
 );
 
-export default function Lines( {weights} ) {
-    const labels = weights.map(item => item.date);
+const dateOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+}
+
+export default function Lines() {
+    const { user } = useContext(UserContext);
+    const { weights } = useContext(WeightsContext);
+    const labels = weights.map(item => new Date(item.recorded_at).toLocaleString("ru", dateOptions));
     const numbers = weights.map(item => item.weight);
+    const initialWeightValue = user?.user_metadata.initial_weight;
+    const targetWeightValue = user?.user_metadata.target_weight;
+    const initialNumbers = weights.map(() => initialWeightValue);
+    const targetNumbers = weights.map(() => targetWeightValue);
+    const maxWeightValue = Math.max(...numbers);
+    const minWeightValue = Math.min(...numbers, targetWeightValue);
+
 
     const options = {
+        interaction: {
+            intersect: false, // Подсказка срабатывает на всей линии
+            mode: 'nearest' // Показывает значения всех датасетов
+        },
         plugins: {
             legend: {
             display: false
             },
         },
-        responsive: true,
         maintainAspectRatio: false,
         scales: {
             y: {
                 display: false,
+                beginbeginAtZero: true,
+                max: Math.round(maxWeightValue + 2),
+                min: Math.round(minWeightValue - 2),
             },
             x: {
                 display: false,
@@ -52,29 +76,36 @@ export default function Lines( {weights} ) {
         datasets: [
         {
             label: '',
+            data: initialNumbers,
+            borderColor: styles.red,
+            backgroundColor: styles.red,
+            borderDash: [5, 5],
+            pointRadius: numbers.map((number, index) => index === 0 ? 1 : 0),
+            pointHoverRadius: numbers.map((number, index) => index === 0 ? 1 : 0)
+        },
+        {
+            label: '',
             data: numbers,
-            borderColor: '#E3AA40',
-            backgroundColor: '#E3AA40',
+            borderColor: styles.yellow,
+            backgroundColor: styles.yellow,
+            pointRadius: 3,
+            pointHoverRadius: 3
+        },
+        {
+            label: '',
+            data: targetNumbers,
+            borderColor: styles.green,
+            backgroundColor: styles.green,
+            borderDash: [5, 5],
+            pointRadius: numbers.map((number, index) => index === numbers.length-1 ? 1 : 0),
+            pointHoverRadius: numbers.map((number, index) => index === numbers.length-1 ? 1 : 0)
         },
         ],
     };
 
-    const dashes = {
-        top: {
-            dashClass: styles.top_dash,
-            labelClass: styles.top_label
-        },
-        bottom: {
-            dashClass: styles.bottom_dash,
-            labelClass: styles.bottom_label
-        }
-    }
-
     return (
         <div className={styles.weight_chart_lines}>
-            <Dash dash={dashes.top} value="94.6"/>
             <Line data={data} options={options} />
-            <Dash dash={dashes.bottom} value="70.0"/>
         </div>
     );
 }

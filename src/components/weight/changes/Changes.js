@@ -4,9 +4,11 @@ import styles from "./Changes.module.scss";
 import Year from "./Year";
 import Button from "@/components/layout/buttons/Button";
 import List from "./List";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { WeightsContext } from "@/lib/WeightsContext";
 
-export default function Changes( {weights} ) {
+export default function Changes() {
+    const { weights } = useContext(WeightsContext) 
     const reversedWeights = [...weights].reverse();
     const [showedWeights, setShowedWeights] = useState(8);
 

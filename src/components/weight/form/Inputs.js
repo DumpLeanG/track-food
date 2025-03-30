@@ -42,23 +42,6 @@ export default function Inputs() {
         }
     }, [user]);
 
-    const handleChange = () => {
-        setInputs((i) => [
-            {   label: "Начальный вес",
-                name: "initial_weight",
-                defaultValue: user?.user_metadata?.initial_weight || 0
-            },
-            {   label: "Текущий вес",
-                name: "current_weight",
-                defaultValue: user?.user_metadata?.current_weight || 0
-            },
-            {   label: "Желаемый вес",
-                name: "target_weight",
-                defaultValue: user?.user_metadata?.target_weight || 0
-            },
-        ]);
-    };
-
     return (
         <div className={styles.weight_form_inputs}>
             {user && inputs.map(input => (
@@ -66,8 +49,7 @@ export default function Inputs() {
                     <label>
                         {input.label}
                     </label>
-                    {console.log(input.defaultValue)}
-                    <NumberInput defaultValue={input.defaultValue} onChange={input.onChange} hasOwnOnChange={true} measurement="кг" step="0.1" max="300"/>
+                    <NumberInput defaultValue={input.defaultValue} onChange={input.onChange} name={input.name} hasOwnOnChange={true} measurement="кг" step="0.1" max="300"/>
                 </div>
             ))}
         </div>

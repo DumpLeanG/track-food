@@ -12,7 +12,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export default function Diagram() {
     const { eatenFood } = useContext(EatenFoodContext);
     const { day } = useContext(DayContext);
-    const filteredFood = eatenFood.filter((food) => food.date === `${day.getFullYear()}-${day.getMonth() + 1 < 10 && '0'}${day.getMonth() + 1}-${day.getDate()}`);
+    const filteredFood = eatenFood.filter((food) => food.date === `${day.getFullYear()}-${day.getMonth() + 1 < 10 ? '0' : ''}${day.getMonth() + 1}-${day.getDate() < 10 ? '0' : ''}${day.getDate()}`);
     const filteredFoodSum = filteredFood.reduce((sum, food) => sum + food.proteins * 4 + food.fats * 9 + food.carbohydrates * 4, 0)
     const filteredFoodStatistics = {
       proteins: Math.round(filteredFood.reduce((sum, food) => sum + food.proteins * 4, 0) * 100 / filteredFoodSum) ,

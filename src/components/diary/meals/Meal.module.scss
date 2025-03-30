@@ -48,6 +48,14 @@
                 text-align: right;
             }
         }
+        &_load {
+            border: 4px solid $white;
+            border-top: 4px solid $green;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            animation: spin 1s linear infinite;
+        }
     }
     &_products {
         display: flex;

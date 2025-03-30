@@ -6,9 +6,9 @@ import Meals from "./Meals";
 export default function WeekStatistics({currentDates}) {
     return (
         <div className={styles.reports_statistics}>
-            <Calories />
+            <Calories currentDates={currentDates}/>
             <BarChart currentDates={currentDates}/>
-            <Meals />
+            <Meals currentDates={currentDates}/>
         </div>
     );
 }

@@ -159,16 +159,6 @@ export default function FoodParameters({ previous, mealId, onUpdate }) {
         })
         .eq('id', id);
 
-        console.log({
-            food_id,
-            name,
-            serving,
-            ...info,
-            date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
-            meal_id,
-            user_id
-        })
-
         if (error) {
             console.error('Ошибка при изменении записи:', error);
             return null;

@@ -20,7 +20,7 @@ export default function Meal( { type } ) {
     const mealsLoading = useContext(LoadingContext);
     const { user } = useContext(UserContext);
     const { eatenFood, setEatenFood, fetchEatenFood, setIsLoading, isLoading } = useContext(EatenFoodContext);
-    const filteredFood = eatenFood.filter((food) => food.date === `${day.getFullYear()}-${day.getMonth() + 1 < 10 && '0'}${day.getMonth() + 1}-${day.getDate()}` && food.meal_id === type.id);
+    const filteredFood = eatenFood.filter((food) => food.date === `${day.getFullYear()}-${day.getMonth() + 1 < 10 ? '0' : ''}${day.getMonth() + 1}-${day.getDate() < 10 ? '0' : ''}${day.getDate()}` && food.meal_id === type.id);
     const filteredFoodInfo = {
         proteins: filteredFood.reduce((sum, food) => sum + food.proteins, 0),
         fats: filteredFood.reduce((sum, food) => sum + food.fats, 0),
@@ -86,7 +86,7 @@ export default function Meal( { type } ) {
                         <ExpandButton isActive={isActive} handleClick={() => setIsActive(!isActive)}/>
                     </div>
                 </>
-                : <div className={styles.diary_meals_item_head_name_load}></div>}
+                : <div className={styles.diary_meals_item_numbers_load}></div>}
             </div>
             {
                 isActive && 

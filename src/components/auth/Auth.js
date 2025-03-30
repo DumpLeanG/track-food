@@ -37,8 +37,8 @@ export default function Auth() {
             .maybeSingle(); // Используем maybeSingle, чтобы избежать ошибки, если email не найден
     
         if (error) {
-            console.error('Ошибка при проверке пользователя:', error.message);
-            return false;
+            setError(error);
+            throw error;
         }
     
         return data !== null; // Если data не null, email существует

@@ -1,21 +1,11 @@
 import styles from "./List.module.scss";
 import Item from "./Item";
+import { useContext } from "react";
+import { EatenFoodContext } from "@/lib/EatenFoodContext";
 
-const foodList = [
-    {
-        name: "Оладьи",
-        amount: 3,
-        calories: 427,
-    },
-    {
-        name: "Рис вареный",
-        amount: 3,
-        calories: 427,
-    },
-
-]
-
-export default function List() {
+export default function List( {currentDates, food} ) {
+    const { isLoading } = useContext(EatenFoodContext);
+    
     return (
         <ul className={styles.reports_food_list}>
             <li className={styles.reports_food_list_item}>
@@ -25,9 +15,9 @@ export default function List() {
                     <span>Ккал</span>
                 </div>
             </li>
-            {foodList.map((item) => (
-                <Item key={item.name} className={styles.reports_food_list_item} name={item.name} amount={item.amount} calories={item.calories}/>
-            ))}
+            {!isLoading ? food.map((item) => (
+                <Item key={item.food_id} className={styles.reports_food_list_item} name={item.name} amount={item.count} calories={item.calories}/>
+            )) : <div className={styles.reports_food_list_load}></div>}
         </ul>
     );
 }

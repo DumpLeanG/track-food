@@ -4,7 +4,7 @@ import { EatenFoodContext } from "@/lib/EatenFoodContext";
 
 export default function Card({ date, dateText, isActive, handleClick }) {
   const { eatenFood, isLoading } = useContext(EatenFoodContext);
-  const filteredFood = eatenFood.filter((food) => food.date === `${date.getFullYear()}-${date.getMonth() + 1 < 10 && '0'}${date.getMonth() + 1}-${date.getDate()}`);
+  const filteredFood = eatenFood.filter((food) => food.date === `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' : ''}${date.getMonth() + 1}-${date.getDate() < 10 ? '0' : ''}${date.getDate()}`);
   const totalCalories = filteredFood.reduce((sum, food) => sum + food.calories, 0);
 
   return (

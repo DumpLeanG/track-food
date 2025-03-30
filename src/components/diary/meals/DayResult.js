@@ -7,7 +7,7 @@ import { EatenFoodContext } from "@/lib/EatenFoodContext";
 export default function DayResult() {
     const { day } = useContext(DayContext);
     const { eatenFood, isLoading } = useContext(EatenFoodContext);
-    const filteredFood = eatenFood.filter((food) => food.date === `${day.getFullYear()}-${day.getMonth() + 1 < 10 && '0'}${day.getMonth() + 1}-${day.getDate()}`);
+    const filteredFood = eatenFood.filter((food) => food.date === `${day.getFullYear()}-${day.getMonth() + 1 < 10 ? '0' : ''}${day.getMonth() + 1}-${day.getDate() < 10 ? '0' : ''}${day.getDate()}`);
     const filteredFoodInfo = {
         proteins: filteredFood.reduce((sum, food) => sum + food.proteins, 0),
         fats: filteredFood.reduce((sum, food) => sum + food.fats, 0),

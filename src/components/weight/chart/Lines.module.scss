@@ -3,31 +3,23 @@
 .weight_chart_lines {
     padding: 40px 0;
     height: 400px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
     canvas {
+        position: absolute;
         z-index: 1;
-        margin: -10px -2px -7px;
     }
-}
-
-.top_dash {
-    width: 100%;
-    border-top: 3px dashed $red;
-    display: block;
-}
-
-.bottom_dash {
-    width: 100%;
-    border-bottom: 3px dashed $green;
-    display: block;
 }
 
 .top_label {
     background: $red;
+    z-index: 2;
 }
 
 .bottom_label {
     background: $green;
+    z-index: 2;
 }

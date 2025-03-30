@@ -7,7 +7,7 @@ import { UserContext } from "@/lib/UserContext";
 export default function Summary() {
     const { eatenFood } = useContext(EatenFoodContext);
     const { day } = useContext(DayContext);
-    const filteredFood = eatenFood.filter((food) => food.date === `${day.getFullYear()}-${day.getMonth() + 1 < 10 && '0'}${day.getMonth() + 1}-${day.getDate()}`);
+    const filteredFood = eatenFood.filter((food) => food.date === `${day.getFullYear()}-${day.getMonth() + 1 < 10 ? '0' : ''}${day.getMonth() + 1}-${day.getDate() < 10 ? '0' : ''}${day.getDate()}`);
     const filteredFoodCalories = filteredFood.reduce((sum, food) => sum + food.calories, 0);
     const { user } = useContext(UserContext);
 
