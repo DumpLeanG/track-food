@@ -152,7 +152,7 @@ export default function BarChart({currentDates}) {
   return (
     <div className={styles.reports_statistics_chart}>
       <div>
-        <Chart type='bar' options={options} data={data}/>
+        <Chart options={options} data={data}/>
       </div>
       <ul className={styles.reports_statistics_chart_days}>
         {currentDates.map((currentDate) => (
