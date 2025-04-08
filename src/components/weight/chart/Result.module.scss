@@ -15,3 +15,26 @@
             animation: spin 1s linear infinite;
     }
 }
+
+@media (max-width: 768px) {
+    .weight_chart_result {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .weight_chart_result {
+        padding: 10px 20px;
+        &_load {
+            width: 17px;
+            height: 17px;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .weight_chart_result {
+        gap: normal;
+        justify-content: space-between;
+    }
+}

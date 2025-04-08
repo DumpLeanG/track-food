@@ -18,3 +18,52 @@
         }   
     }
 }
+
+@media (max-width: 1280px) {
+    .weight_form_inputs {
+        gap: 30px;
+        &_item {
+            width: 100%;
+            input {
+                width: 100%;
+            }   
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .weight_form_inputs {
+        gap: 15px 30px;
+        flex-wrap: wrap;
+        &_item {
+            width: calc(50% - 15px);
+        }
+        :nth-child(2) {
+            order: 3;
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .weight_form_inputs {
+        gap: 10px;
+        &_item {
+            width: calc(50% - 10px);
+            input {
+                padding: 10px;
+            }   
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .weight_form_inputs {
+        &_item {
+            width: 100%;
+        }
+        :nth-child(2) {
+            order: unset;
+        }
+    }
+}

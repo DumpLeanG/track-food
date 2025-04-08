@@ -8,23 +8,26 @@
     border-radius: 15px;
     box-shadow: $shadow;
     gap: 10px;
+    width: 100%;
     &_line {
-        width: 560px;
+        width: 100%;
         padding: 5px;
-        border-radius: 10px;
+        border-radius: 15px;
         background: $dwhite;
         text-align: center;
         position: relative;
         margin-bottom: 10px;
         &_fill {
             padding: 5px;
-            border-radius: 10px;
+            border-radius: 15px;
             mix-blend-mode: difference;
+            height: 32px;
             span {
+                position: absolute;
                 white-space: nowrap;
                 color: $mix-purple;
                 mix-blend-mode: difference;
-                width: 540px;
+                width: 100%;
                 display: flex;
                 justify-content: center;
             }
@@ -41,5 +44,22 @@
         height: 3px;
         border: none;
         background: $dwhite;
+    }
+}
+
+@media (max-width: 768px) {
+    .diary_statistics_summary {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .diary_statistics_summary {
+        padding: 10px 20px;
+        &_line {
+            &_fill {
+                height: 27px;
+            }
+        }
     }
 }

@@ -17,3 +17,15 @@
         width: calc(100% - 30px);
     }
 }
+
+@media (max-width: 480px) {
+    .reports_food{
+        &_title {
+            padding: 10px 20px;
+        }
+        button {
+            margin: 10px;
+            width: calc(100% - 20px);
+        }
+    }
+}

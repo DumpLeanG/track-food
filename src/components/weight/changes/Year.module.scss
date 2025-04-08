@@ -5,3 +5,9 @@
     background: $white;
     border-radius: 15px;
 }
+
+@media (max-width: 480px) {
+    .weight_changes_year {
+        padding: 10px 20px;
+    }
+}

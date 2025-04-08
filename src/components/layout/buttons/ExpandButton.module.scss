@@ -9,3 +9,12 @@
 .activated_btn {
     transform: rotate(180deg);
 }
+
+@media (max-width: 480px) {
+    .expand_btn {
+        img {
+            width: 13px;
+            height: 13px;
+        }
+    }
+}

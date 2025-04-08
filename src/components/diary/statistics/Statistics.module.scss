@@ -2,3 +2,21 @@
     display: flex;
     gap: 40px;
 }
+
+@media (max-width: 768px) {
+    .diary_statistics {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 640px) {
+    .diary_statistics {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 360px) {
+    .diary_statistics {
+        gap: 20px;
+    }
+}

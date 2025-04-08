@@ -6,17 +6,8 @@
     padding: 40px 30px;
     gap: 10px;
     position: relative;
-    > span {
-        position: absolute;
-        width: 100%;
-        left: 0;
-        top: 40px;
-        border-top: 3px dashed $txt-color;
-    }
-    canvas {
+    > div {
         height: 200px;
-        margin-left: -2px;
-        margin-right: -5px;
     }
     &_days {
         display: flex;
@@ -25,6 +16,46 @@
         list-style: none;
         li {
             width: 165px;
+        }
+    }
+}
+
+@media (max-width: 1280px) {
+    .reports_statistics_chart {
+        > div {
+            height: 180px;
+        }
+        &_days {
+            li {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .reports_statistics_chart {
+        padding: 30px;
+        > div {
+            height: 150px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .reports_statistics_chart {
+        padding: 30px 20px;
+        > div {
+            height: 120px;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .reports_statistics_chart {
+        padding: 30px 20px;
+        > div {
+            height: 100px;
         }
     }
 }

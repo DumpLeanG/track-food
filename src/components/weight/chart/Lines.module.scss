@@ -8,18 +8,24 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    canvas {
-        position: absolute;
-        z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .weight_chart_lines {
+        padding: 30px 0;
+        height: 300px;
     }
 }
 
-.top_label {
-    background: $red;
-    z-index: 2;
+@media (max-width: 480px) {
+    .weight_chart_lines {
+        height: 250px;
+    }
 }
 
-.bottom_label {
-    background: $green;
-    z-index: 2;
+@media (max-width: 360px) {
+    .weight_chart_lines {
+        padding: 20px 0;
+        height: 200px;
+    }
 }

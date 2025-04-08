@@ -4,11 +4,44 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 40px;
+    &_arrow {
+        padding: 15px;
+        border-radius: 50%;
+        box-shadow: $shadow;
+        background: $white;
+    }
 }
 
-.diary_dates_arrow {
-    padding: 15px;
-    border-radius: 50%;
-    box-shadow: $shadow;
-    background: $white;
+@media (max-width: 1280px) {
+    .diary_dates {
+        gap: 15px;
+    }
 }
+
+@media (max-width: 640px) {
+    .diary_dates {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .diary_dates {
+        justify-content: normal;
+        gap: 15px;
+        &_arrow {
+            padding: 8px;
+            img {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .diary_dates {
+        gap: 10px;
+    }
+}
+

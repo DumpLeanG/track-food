@@ -11,3 +11,12 @@
         width: calc(100% - 30px);
     }
 }
+
+@media (max-width: 480px) {
+    .weight_changes {
+        button {
+            margin: 10px;
+            width: calc(100% - 20px);
+        }
+    }
+}

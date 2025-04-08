@@ -21,9 +21,6 @@
         border-radius: 15px;
         background: $dwhite;
     }
-    button {
-        margin-top: 5px;
-    }
     &_container {
         height: 230px;
         display: flex;
@@ -37,6 +34,57 @@
             height: 40px;
             animation: spin 1s linear infinite;
             margin-top: -20px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .user {
+        width: 390px;
+        input {
+            padding: 15px;
+            border-radius: 15px;
+            background: $dwhite;
+        }
+        button {
+            margin-top: 5px;
+        }
+        &_container {
+            height: 230px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &_load {
+                border: 4px solid $dwhite;
+                border-top: 4px solid $green;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                animation: spin 1s linear infinite;
+                margin-top: -20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .user {
+        width: 100vw;
+        margin: 0 -20px;
+        border-radius: 15px;
+        top: 35px;
+        filter: drop-shadow($shadow);
+        z-index: -1;
+        input {
+            padding: 10px;
+        }
+        &_container {
+            height: 200px;
+            &_load {
+                width: 30px;
+                height: 30px;
+                margin-top: -15px;
+            }
         }
     }
 }

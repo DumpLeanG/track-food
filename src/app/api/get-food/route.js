@@ -12,7 +12,6 @@ export async function GET(req) {
       );
     }
 
-    // Получаем accessToken из заголовков
     const accessToken = req.headers.get('authorization')?.split(' ')[1];
 
     if (!accessToken) {
@@ -22,10 +21,8 @@ export async function GET(req) {
       );
     }
 
-    // Формируем URL для запроса к FatSecret API
-    const url = `https://platform.fatsecret.com/rest//food/?method=food.get&food_id=${foodId}&format=json`;
+    const url = `https://platform.fatsecret.com/rest/food/?method=food.get&food_id=${foodId}&format=json`;
 
-    // Отправляем запрос к FatSecret API
     const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${accessToken}`,

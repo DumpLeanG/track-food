@@ -5,3 +5,12 @@
     outline: none;
     cursor: pointer;
 }
+
+@media (max-width: 480px) {
+    .add_btn {
+        img {
+            width: 15px;
+            height: 15px;
+        }
+    }
+}

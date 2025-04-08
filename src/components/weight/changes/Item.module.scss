@@ -13,3 +13,17 @@
         gap: 15px;
     }
 }
+
+@media (max-width: 480px) {
+    .weight_changes_list_item {
+        margin: 0 10px;
+        padding: 10px;
+        div {
+            gap: 10px;
+            img {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+}

@@ -1,5 +1,11 @@
 @import "@/styles/variables";
 
+.adding_block_used {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
 .adding_block_list {
     display: flex;
     flex-direction: column;
@@ -11,11 +17,18 @@
         border-bottom: 3px solid $dwhite;
         display: flex;
         justify-content: space-between;
-        span {
-            width: 390px;
-        }
+        gap: 20px;
     }
     :last-child {
         border-bottom: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .adding_block_list {
+        &_item {
+            padding: 10px 0;
+            margin: 0 10px;
+        }
     }
 }

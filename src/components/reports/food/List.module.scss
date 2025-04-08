@@ -35,3 +35,37 @@
         animation: spin 1s linear infinite;
     }
 }
+
+@media (max-width: 768px) {
+    .reports_food_list {
+        &_item{
+            div {
+                gap: 30px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .reports_food_list {
+        &_item{
+            padding: 10px;
+            margin: 0 10px;
+        }
+        &_load {
+            margin: 10px 20px;
+            width: 17px;
+            height: 17px;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .reports_food_list {
+        &_item{
+            div {
+                gap: 20px;
+            }
+        }
+    }
+}

@@ -12,3 +12,21 @@
     top: 45px;
     gap: 10px;
 }
+
+@media (max-width: 768px) {
+    .calendar {
+        width: 390px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar {
+        padding: 10px 20px;
+        border-radius: 15px;
+        width: 100vw;
+        margin: 0 -20px;
+        top: 35px;
+        filter: drop-shadow($shadow);
+        z-index: -1;
+    }
+}

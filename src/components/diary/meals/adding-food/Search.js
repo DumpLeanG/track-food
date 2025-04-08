@@ -5,7 +5,6 @@ import styles from "./Search.module.scss";
 import Image from "next/image";
 import Item from "./Item";
 
-// Вспомогательная функция debounce
 function debounce(func, delay) {
     let timeoutId;
     return (...args) => {
@@ -21,17 +20,15 @@ export default function Search() {
     const [loading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
     const [error, setError] = useState(null);
-    const [page, setPage] = useState(0); // Текущая страница
-    const [hasMore, setHasMore] = useState(true); // Есть ли еще данные
-    const observer = useRef(); // Ref для Intersection Observer
+    const [page, setPage] = useState(0);
+    const [hasMore, setHasMore] = useState(true);
+    const observer = useRef();
 
-    // Функция для выполнения запроса
     const fetchFoodData = async (query, page) => {
         setLoading(true);
         setError(null);
 
         try {
-            // Получаем токен
             const tokenResponse = await fetch('/api/get-token', {
                 method: 'POST',
             });
@@ -41,7 +38,6 @@ export default function Search() {
             const tokenData = await tokenResponse.json();
             const accessToken = tokenData.access_token;
 
-            // Ищем еду с пагинацией
             const foodResponse = await fetch('/api/search-food', {
                 method: 'POST',
                 headers: {
@@ -54,42 +50,38 @@ export default function Search() {
             }
             const foodData = await foodResponse.json();
 
-            // Проверяем, что foodData.foods_search.results.food существует
             if (foodData.foods_search && foodData.foods_search.results && foodData.foods_search.results.food) {
                 const newItems = foodData.foods_search.results.food;
-                setItems((prevItems) => (page === 0 ? newItems : [...prevItems, ...newItems])); // Обновляем список
-                setHasMore(newItems.length > 0); // Проверяем, есть ли еще данные
+                setItems((prevItems) => (page === 0 ? newItems : [...prevItems, ...newItems]));
+                setHasMore(newItems.length > 0);
             } else {
-                setItems([]); // Если данных нет, устанавливаем пустой массив
+                setItems([]);
                 setHasMore(false);
             }
         } catch (error) {
             setError(error);
-            setItems([]); // В случае ошибки очищаем список
+            setItems([]);
         } finally {
             setLoading(false);
         }
     };
 
-    // Debounce-версия функции fetchFoodData
     const debouncedFetchFoodData = useCallback(debounce(fetchFoodData, 500), []);
 
-    // Загрузка данных при изменении query или page
     useEffect(() => {
         if (query) {
             debouncedFetchFoodData(query, page);
         } else {
-            setItems([]); // Если query пустой, очищаем список
+            setItems([]);
         }
     }, [query, page, debouncedFetchFoodData]);
 
-    // Настройка Intersection Observer для бесконечной прокрутки
     useEffect(() => {
         if (loading || !hasMore) return;
 
         const observerCallback = (entries) => {
             if (entries[0].isIntersecting) {
-                setPage((prevPage) => prevPage + 1); // Увеличиваем страницу
+                setPage((prevPage) => prevPage + 1);
             }
         };
 
@@ -121,7 +113,7 @@ export default function Search() {
                     defaultValue={query}
                     onChange={(e) => {
                         setQuery(e.target.value);
-                        setPage(0); // Сбрасываем страницу при новом запросе
+                        setPage(0);
                     }}
                     name="search"
                 />
@@ -142,7 +134,6 @@ export default function Search() {
                     <div className={styles.adding_block_list_txt}>Нет результатов</div>
                 ) : null}
 
-                {/* Триггер для загрузки новых данных */}
                 {hasMore && !loading && (
                     <div id="load-more-trigger"></div>
                 )}

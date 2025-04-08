@@ -11,6 +11,7 @@ import { UserContext } from "@/lib/UserContext";
 export default function User() {
     const [isEditing, setIsEditing] = useState(false);
     const { user, setIsEdited } = useContext(UserContext);
+    
     const handleSignOut = async () => {
         const { error } = await supabase.auth.signOut();
         if (error) {
@@ -55,15 +56,14 @@ export default function User() {
             ) : <div className={styles.user_container}>
                 <div className={styles.user_container_load}></div>
             </div>}
-            
         </div>
-            : <form className={styles.user} onSubmit={handleChange}>
-                <Input type="name" defaultValue={user.user_metadata.name ? user.user_metadata.name : ""}/>
-                <Input type="email" defaultValue={user.email ? user.email : ""}/>
-                <NumberInput defaultValue={user.user_metadata.current_weight ? user.user_metadata.current_weight : ""} measurement="кг" step="0.1" max="300" placeholder="Текущий вес" name="current_weight"/>
-                <NumberInput defaultValue={user.user_metadata.rda ? user.user_metadata.rda : ""} measurement="ккал" step="100" max="4000" placeholder="РСК" name="rda"/>
-                <Button type="save" />
-                <Button type="cancel" onClick={() => setIsEditing(false)} />
-            </form>
+        : <form className={styles.user} onSubmit={handleChange}>
+            <Input type="name" defaultValue={user.user_metadata.name ? user.user_metadata.name : ""}/>
+            <Input type="email" defaultValue={user.email ? user.email : ""}/>
+            <NumberInput defaultValue={user.user_metadata.current_weight ? user.user_metadata.current_weight : ""} measurement="кг" step="0.1" max="300" placeholder="Текущий вес" name="current_weight"/>
+            <NumberInput defaultValue={user.user_metadata.rda ? user.user_metadata.rda : ""} measurement="ккал" step="100" max="4000" placeholder="РСК" name="rda"/>
+            <Button type="save" />
+            <Button type="cancel" onClick={() => setIsEditing(false)} />
+        </form>
     );
 }

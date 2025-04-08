@@ -18,3 +18,9 @@
 .red_btn {
     background: $red;
 }
+
+@media (max-width: 480px) {
+    .button {
+        padding: 8px;
+    }
+}

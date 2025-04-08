@@ -46,7 +46,7 @@ export default function Header() {
                             </button>
                             {(shown === "notifications") && <Notifications />}
                         </li>
-                        <li className={(shown === "calendar") ? styles.activated_item : null} ref={(shown === "calendar") ? ref : null}>
+                        <li className={(shown === "calendar") ? styles.activated_item  : null} ref={(shown === "calendar") ? ref : null}>
                             <button className={styles.header_nav_list_item_btn} onClick={() => setShown("calendar")} >
                                 <Image
                                 src="/calendar.svg"

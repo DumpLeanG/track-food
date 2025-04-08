@@ -47,3 +47,33 @@
     border-bottom: 3px solid $green;
     color: $txt-color;
 }
+
+@media (max-width: 768px) {
+    .notifications {
+        width: 390px;
+    }
+}
+
+@media (max-width: 480px) {
+    .notifications {
+        width: 100vw;
+        top: 35px;
+        margin: 0 -20px;
+        border-radius: 15px;
+        filter: drop-shadow($shadow);
+        z-index: -1;
+        &_head {
+            border-radius: 15px 15px 0 0;
+            &_item {
+                padding: 15px;
+            }
+        }
+        &_list {
+            max-height: 200px;
+            &_empty {
+                padding: 80px 0;
+                font-size: 18px;
+            }
+        }
+    }
+}

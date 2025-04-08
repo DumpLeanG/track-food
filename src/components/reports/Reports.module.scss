@@ -6,3 +6,33 @@
         gap: 40px;
     }
 }
+
+@media (max-width: 768px) {
+    .reports {
+        padding: 30px 0;
+        > div {
+            gap: 30px;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .reports {
+        padding: 103px 0 102px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reports {
+        padding: 86px 0 87px;
+    }
+}
+
+@media (max-width: 360px) {
+    .reports {
+        padding: 76px 0 77px;
+        > div {
+            gap: 20px;
+        }
+    }
+}

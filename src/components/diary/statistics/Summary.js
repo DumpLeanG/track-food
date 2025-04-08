@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { EatenFoodContext } from "@/lib/EatenFoodContext";
 import { DayContext } from "@/lib/DayContext";
 import { UserContext } from "@/lib/UserContext";
+import { IsDeviceContext } from "@/lib/IsDeviceContext";
 
 export default function Summary() {
     const { eatenFood } = useContext(EatenFoodContext);
@@ -14,7 +15,7 @@ export default function Summary() {
     return (
         <div className={styles.diary_statistics_summary}>
             <div className={styles.diary_statistics_summary_line}>
-                <div className={styles.diary_statistics_summary_line_fill} style={{width: `${5.4 * (filteredFoodCalories / user?.user_metadata?.rda * 100) || 0}px`, background: (user?.user_metadata.rda && filteredFoodCalories) && styles.mixPurple}}>
+                <div className={styles.diary_statistics_summary_line_fill} style={{width: `${Math.round(filteredFoodCalories / user?.user_metadata?.rda * 100 * 100) / 100 || 0}%`, background: (user?.user_metadata.rda && filteredFoodCalories) && styles.mixPurple}}>
                     <span>{Math.round(filteredFoodCalories / user?.user_metadata?.rda * 100 * 100) / 100 || 0}% от РСК</span>
                 </div>
             </div>

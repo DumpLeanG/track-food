@@ -16,9 +16,9 @@ export default function Product( {product, onDelete} ) {
 
     async function deleteRecordById(id) {
         const { data, error } = await supabase
-          .from('eaten_food') // Указываем таблицу
-          .delete() // Вызываем метод удаления
-          .eq('id', id); // Указываем условие: удалить запись с определённым id
+          .from('eaten_food')
+          .delete()
+          .eq('id', id);
       
         if (error) {
           console.error('Ошибка при удалении записи:', error);

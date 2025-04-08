@@ -33,3 +33,44 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .diary_meals_item_products_item {
+        &_info {
+            &_pfc {
+                gap: 30px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .diary_meals_item_products_item {
+        padding: 10px;
+        gap: 10px;
+        &_info {
+            gap: 10px;
+            &_pfc {
+                span {
+                    width: 40px;
+                }
+            }
+            &_calories {
+                width: 40px;
+            }
+        }
+        :last-child {
+            flex-direction: column;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .diary_meals_item_products_item {
+        &_info {
+            &_pfc {
+                gap: 20px;
+            }
+        }
+    }
+}

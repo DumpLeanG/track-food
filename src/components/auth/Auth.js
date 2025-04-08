@@ -34,14 +34,14 @@ export default function Auth() {
             .from('profiles')
             .select('email')
             .eq('email', email)
-            .maybeSingle(); // Используем maybeSingle, чтобы избежать ошибки, если email не найден
+            .maybeSingle();
     
         if (error) {
             setError(error);
             throw error;
         }
     
-        return data !== null; // Если data не null, email существует
+        return data !== null;
     }
 
     const handleSignUp = async (e) => {
@@ -49,13 +49,11 @@ export default function Auth() {
         setError(null);
         setSuccess(false);
     
-        // Проверка совпадения паролей
         if (password !== confirmPassword) {
             setError("Пароли не совпадают");
             return;
         }
     
-        // Проверка длины пароля
         if (password.length < 8) {
             setError("Пароль должен содержать не менее 8 символов");
             return;
@@ -66,7 +64,7 @@ export default function Auth() {
             setError("Пользователь с таким email уже зарегистрирован");
             return;
         }
-        // Регистрация пользователя
+
         const { data, error } = await supabase.auth.signUp({
             email,
             password,

@@ -17,6 +17,7 @@
         &_name {
             display: flex;
             gap: 15px;
+            align-items: center;
             &_load {
                 border: 4px solid $dwhite;
                 border-top: 4px solid $green;
@@ -63,5 +64,61 @@
         list-style: none;
         padding: 15px;
         gap: 15px
+    }
+}
+
+@media (max-width: 768px) {
+    .diary_meals_item {
+        &_numbers {
+            &_pfc {
+                gap: 30px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .diary_meals_item {
+        &_head {
+            padding: 10px 20px;
+            &_name {
+                gap: 10px;
+                &_load {
+                    width: 17px;
+                    height: 17px;
+                }
+                img {
+                    width: 17px;
+                    height: 17px;
+                }
+            }
+        }
+        &_numbers {
+            padding: 10px 20px;
+            span {
+                width: 40px;
+            }
+            &_calories {
+                gap: 10px;
+            }
+            &_load {
+                width: 17px;
+                height: 17px;
+            }
+        }
+        &_products {
+            padding: 10px;
+            gap: 10px
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .diary_meals_item {
+        &_numbers {
+            &_pfc {
+                gap: 20px;
+            }
+        }
     }
 }

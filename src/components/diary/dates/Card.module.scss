@@ -22,3 +22,48 @@
 .selected_date {
     color: $green;
 }
+
+@media (max-width: 1280px) {
+    .diary_dates_list_item {
+        width: 100%;
+        min-width: 80px;      
+    }
+}
+
+@media (max-width: 768px) {
+    .diary_dates_list_item {
+        width: 54px;
+        min-width: auto;
+        &_date {
+            padding: 15px 10px;
+        }
+        &_calories {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .diary_dates_list_item {
+        width: auto;
+        font-size: 0;
+        padding: 5px;
+        border-radius: 50%;
+        &_date {
+            padding: 8px;
+            background: $white;
+            border-radius: 15px;
+        }
+        &_calories {
+            display: none;
+        }
+    }
+
+    .selected_date {
+        color: $green;
+        span {
+            background: $green;
+        }
+    }
+    
+}

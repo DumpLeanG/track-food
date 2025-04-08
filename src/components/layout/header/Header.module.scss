@@ -2,8 +2,9 @@
 
 .header {
     background: $dwhite;
-    padding: 25px;
+    padding: 25px 0;
     box-shadow: $shadow;
+    z-index: 2;
     &_nav {
         display: flex;
         justify-content: space-between;
@@ -49,5 +50,78 @@
     .header_nav_list_item_btn {
         display: block;
         filter: $filter-from-black;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        &_nav {
+            &_list {
+                gap: 30px;
+            }
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .header {
+        padding: 20px 0;
+        position: fixed;
+        width: 100%;
+        &_nav {
+            > :nth-child(2) {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                justify-content: center;
+                background: $dwhite;
+                padding: 20px;
+                z-index: 2;
+                box-shadow: $invert-shadow;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 15px 0;
+        z-index: 1;
+        &_nav {
+            &_logo {
+                width: 100px;
+                height: 22px;
+            }
+            > :nth-child(2) {
+                padding: 15px;
+            }
+            &_list {
+                &_item {
+                    &_btn {
+                        img {
+                            width: 22px;
+                            height: 22px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .activated_item {
+        position: static;
+        filter: none;
+        z-index: auto;
+    }
+}
+
+@media (max-width: 360px) {
+    .header {
+        &_nav {
+            &_list {
+                gap: 20px;
+            }
+        }
     }
 }

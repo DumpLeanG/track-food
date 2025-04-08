@@ -14,7 +14,6 @@ const categories = [
     {id: 2,name: "most", text: "Наиболее употребляемые"},
 ]
 
-
 export default function AddingFood() {
     const [category, setCategory] = useState(categories[0]);
     const { setOpened } = useContext(FoodContext);

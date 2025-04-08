@@ -52,3 +52,28 @@
     color: $txt-color;
 }
 
+@media (max-width: 480px) {
+    .auth {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        &_form {
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            left: 0;
+            top: 0;
+            transform: none;
+            &_head {
+                &_item {
+                    padding: 15px;
+                }
+            }
+            &_box {
+                input {
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}

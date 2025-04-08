@@ -32,9 +32,7 @@
         border-bottom: 3px solid $dwhite;
         display: flex;
         justify-content: space-between;
-        span {
-            width: 390px;
-        }
+        gap: 20px;
     }
     :last-child {
         border-bottom: none;
@@ -56,6 +54,84 @@
             height: 40px;
             animation: spin 1s linear infinite;
             margin-top: -20px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .adding_block_search {
+        &_input {
+            padding: 10px;
+            input {
+                padding: 10px;
+            }
+            img {
+                top: 20px;
+                right: 20px;
+                width: 17px;
+                height: 17px;
+            }
+        }
+    }
+    
+    .adding_block_list {
+        &_item {
+            padding: 10px 0;
+            margin: 0 10px;
+        }
+        &_txt {
+            padding: 10px;
+        }
+        &_container {
+            height: 320px;
+            &_load {
+                width: 30px;
+                height: 30px;
+                margin-top: -15px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .adding_block_search {
+        &_input {
+            padding: 10px;
+            input {
+                padding: 10px;
+            }
+            img {
+                top: 20px;
+                right: 20px;
+                width: 17px;
+                height: 17px;
+            }
+        }
+    }
+    
+    .adding_block_list {
+        &_item {
+            padding: 10px 0;
+            margin: 0 10px;
+        }
+        &_txt {
+            padding: 10px;
+        }
+        &_container {
+            height: 320px;
+            &_load {
+                width: 30px;
+                height: 30px;
+                margin-top: -15px;
+            }
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .adding_block_list {
+        &_container {
+            height: 300px;
         }
     }
 }

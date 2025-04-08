@@ -62,3 +62,36 @@
         }
     }
 }
+
+@media (max-width: 480px) {
+    .parameters {
+        padding: 0 20px;
+        &_block {
+            width: 100%;
+            padding: 10px;
+            gap: 10px;
+            &_title {
+                padding-bottom: 10px;
+            }
+            &_element {
+                gap: 10px;
+                &_input {
+                    padding: 10px;
+                    padding-right: 32px;
+                }
+                &_expand {
+                    right: 10px;
+                    width: 12px;
+                    height: 12px;
+                }
+            }
+            &_info {
+                gap: 10px;
+                &_item {
+                    padding: 10px;
+                    width: calc(50% - 5px)
+                }
+            }
+        }
+    }
+}

@@ -3,3 +3,15 @@
     flex-direction: column;
     gap: 40px;
 }
+
+@media (max-width: 768px) {
+    .diary_meals {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 360px) {
+    .diary_meals {
+        gap: 20px;
+    }
+}

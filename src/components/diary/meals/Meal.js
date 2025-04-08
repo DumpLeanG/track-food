@@ -100,7 +100,7 @@ export default function Meal( { type } ) {
             }
             {opened === "adding" 
                 ? <FoodContext.Provider value={{food, setFood, setOpened}}>
-                        <AddingFood/>
+                    <AddingFood/>
                 </FoodContext.Provider>
             : (opened === "parameters" && 
                 <FoodContext.Provider value={{food, setFood, setOpened}}>

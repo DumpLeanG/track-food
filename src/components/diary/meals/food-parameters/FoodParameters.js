@@ -25,13 +25,12 @@ export default function FoodParameters({ previous, mealId, onUpdate }) {
         carbohydrates: 0,
     });
 
-    const foodId = useRef();
+    const selectedFood = useRef();
 
     useEffect(() => {
         if(food.id) {
-            foodId.current = food.id;
+            selectedFood.current = food;
         }
-        setIsClosed(true);
     },[food])
 
     const previousOpened = useRef();
@@ -71,41 +70,46 @@ export default function FoodParameters({ previous, mealId, onUpdate }) {
         }
     }
 
-    // Проверяем наличие servings и делаем запрос, если их нет
     useEffect(() => {
         async function fetchData() {
+            if (!food?.food_id) return;
             setIsLoading(true);
-            if (!food?.servings) {
-                const data = await fetchFoodDetails(food.food_id);
-                if (data) {
-                    // Обновляем состояние food с новыми данными
-                    setFood(data);
+            try {
+                let foodData = food;
+                
+                if (!food.servings) {
+                    const data = await fetchFoodDetails(food.food_id);
+                    if (data) {
+                        foodData = data;
+                        setFood(data);
+                    }
+                }
 
-                    // Устанавливаем первый serving по умолчанию
-                    setSelectedServing(data.servings.serving[0]);
+                if (!foodData.servings?.serving) return;
+
+                const targetServing = foodData.servings.serving[0] ? foodData.servings.serving.find(
+                    serving => serving.measurement_description === (selectedFood.current?.serving || foodData.servings.serving[0]?.measurement_description)
+                ) || foodData.servings.serving[0] : foodData.servings.serving;
+
+                if (targetServing) {
+                    setSelectedServing(targetServing);
                     setInfo({
-                        amount: +data.servings.serving[0].number_of_units,
-                        calories: +data.servings.serving[0].calories,
-                        proteins: +data.servings.serving[0].protein,
-                        fats: +data.servings.serving[0].fat,
-                        carbohydrates: +data.servings.serving[0].carbohydrate,
+                        amount: selectedFood.current?.amount || +targetServing.number_of_units,
+                        calories: selectedFood.current?.calories || +targetServing.calories,
+                        proteins: selectedFood.current?.proteins || +targetServing.protein,
+                        fats: selectedFood.current?.fats || +targetServing.fat,
+                        carbohydrates: selectedFood.current?.carbohydrates || +targetServing.carbohydrate,
                     });
                 }
-            } else {
-            // Если servings уже есть, устанавливаем первый serving по умолчанию
-                setSelectedServing(food.servings.serving[0]);
-                setInfo({
-                    amount: +food.servings.serving[0].number_of_units,
-                    calories: +food.servings.serving[0].calories,
-                    proteins: +food.servings.serving[0].protein,
-                    fats: +food.servings.serving[0].fat,
-                    carbohydrates: +food.servings.serving[0].carbohydrate,
-                });
-                }
-            setIsLoading(false);
+            } catch (error) {
+                console.error("Error fetching food details:", error);
+            } finally {
+                 setIsLoading(false);
+            }
         }
 
         fetchData();
+
     }, [food, setFood]);
 
     const handleServingChange = (e) => {
@@ -170,7 +174,7 @@ export default function FoodParameters({ previous, mealId, onUpdate }) {
 
     const handleSave = async (e) => {
         e.preventDefault();
-        const result = previousOpened.current === "adding" ? await addEatenFood(food.food_id, food.food_name, selectedServing.measurement_description, info, day, mealId, user.id) : await editEatenFood(foodId.current, food.food_id, food.food_name, selectedServing.measurement_description, info, day, mealId, user.id);
+        const result = previousOpened.current === "adding" ? await addEatenFood(food.food_id, food.food_name, selectedServing.measurement_description, info, day, mealId, user.id) : await editEatenFood(selectedFood.current.id, food.food_id, food.food_name, selectedServing.measurement_description, info, day, mealId, user.id);
         if (result) {
             setOpened(null);
             onUpdate();
@@ -212,11 +216,14 @@ export default function FoodParameters({ previous, mealId, onUpdate }) {
                 onChange={handleServingChange}
                 value={selectedServing?.serving_id}
             >
-                {food.servings?.serving.map((serving) => (
+                {food.servings?.serving[0] ? food.servings?.serving.map((serving) => (
                 <option key={serving.serving_id} value={serving.serving_id}>
                     {serving.measurement_description}
                 </option>
-                ))}
+                )) :
+                <option key={food.servings.serving.serving_id} value={food.servings.serving.serving_id}>
+                    {food.servings.serving.measurement_description}
+                </option>}
             </select>
             <Image
                 src="/expand.svg"

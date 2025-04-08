@@ -14,6 +14,10 @@ body {
   font-size: 18px;
 }
 
+main {
+  min-height: 100vh;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -118,4 +122,60 @@ input::placeholder {
   background-color: $green;
   border-radius: 15px;
   border: 3px solid $white;
+}
+
+@media (max-width: 768px) {
+  .react-calendar {
+    &__month-view {
+      &__weekdays, &__days  {
+        gap: 15px 30px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .react-calendar {
+    &__month-view {
+      &__weekdays, &__days  {
+        justify-content: center;
+        &__weekday, &__day {
+          flex: none !important;
+          width: 21px;
+        }
+        &__weekday {
+          color: $grey;
+          abbr {
+            text-decoration: none;
+          }
+        }
+        &__day--neighboringMonth {
+          color: $grey;
+        }
+      }
+    }
+    
+    &__tile--active {
+      color: $green;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .react-calendar {
+    &__month-view {
+      &__weekdays, &__days  {
+        gap: 10px 20px;
+      }
+    }
+  }
 }

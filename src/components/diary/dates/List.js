@@ -1,22 +1,25 @@
-import { useContext } from 'react';
+'use client';
+
+import { useContext, useEffect, useState } from 'react';
 import Card from './Card';
 import styles from "./List.module.scss";
-import { getWeekDays, weekDays} from '@/lib/getWeekDays';
+import { getWeekDays, weekDays } from '@/lib/getWeekDays';
+import { IsDeviceContext } from '@/lib/IsDeviceContext';
 
 export default function List({ day, setDay }) {
-    let currentDates = getWeekDays(day);
-
+    const { isLaptop } = useContext(IsDeviceContext);
+    const currentDates = getWeekDays(day);
     return (
         <ul className={styles.diary_dates_list}>
-            {
-                currentDates.map((currentDate) => (
-                    <Card key={currentDate} 
+            {currentDates.map((currentDate) => (
+                <Card 
+                    key={currentDate.toString()} 
                     handleClick={() => setDay(currentDate)}
                     date={currentDate}
-                    dateText={weekDays[currentDate.getDay()] + " / " + currentDate.getDate() + "." + (currentDate.getMonth() + 1)}
-                    isActive={currentDate.getDay() === day.getDay()}/>
-                ))
-            }
+                    dateText={isLaptop ? `${currentDate.getDate()}.${currentDate.getMonth() + 1}` : `${weekDays[currentDate.getDay()]} / ${currentDate.getDate()}.${currentDate.getMonth() + 1}`}
+                    isActive={currentDate.toDateString() === day.toDateString()}
+                />
+            ))}
         </ul>
     );
 }

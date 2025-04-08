@@ -19,3 +19,13 @@
         animation: spin 1s linear infinite;
     }
 }
+
+@media (max-width: 480px) {
+    .weight_changes_list {
+        &_load {
+            margin: 10px 20px 0;
+            width: 17px;
+            height: 17px;
+        }
+    }
+}

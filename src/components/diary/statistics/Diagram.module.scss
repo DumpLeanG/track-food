@@ -18,7 +18,7 @@
         li {
             display: flex;
             align-items: center;
-            span {
+            :first-child {
                 margin-right: 5px;
                 border-radius: 50%;
                 width: 25px;
@@ -27,23 +27,94 @@
             }
         }
         :nth-child(1) {
-            span {
+            :first-child {
                 background: $blue;
             }
             
         }
         :nth-child(2) {
-            span {
+            :first-child {
                 background: $magenta;
             }
             
         }
         :nth-child(3) {
-            span {
+            :first-child {
                 background: $yellow;
             }
             
         }
         
+    }
+}
+
+@media (max-width: 768px) {
+    .diary_statistics_diagram {
+        gap: 30px;
+        &_labels {
+            li {
+                :first-child {
+                    width: 22px;
+                    height: 22px;
+                }
+                :nth-child(2) {
+                    width: 80px;
+                }
+            }
+            
+        }
+        canvas {
+            width: 165px;
+            height: 165px;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .diary_statistics_diagram {
+        &_labels {
+            li {
+                :nth-child(2) {
+                    width: auto;
+                }
+            }
+            
+        }
+        canvas {
+            width: 180px;
+            height: 180px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .diary_statistics_diagram {
+        padding: 10px 20px;
+        &_labels {
+            li {
+                :first-child {
+                    width: 20px;
+                    height: 20px;
+                }
+                :nth-child(2) {
+                    width: 60px;
+                }
+            }
+            
+        }
+        canvas {
+            width: 165px;
+            height: 165px;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .diary_statistics_diagram {
+        gap: 20px;
+        canvas {
+            width: 150px;
+            height: 150px;
+        }
     }
 }

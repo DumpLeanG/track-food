@@ -29,7 +29,6 @@ export default function Meals() {
         return data;
       }
     
-      // Используем useEffect для выполнения асинхронного запроса
       useEffect(() => {
         async function fetchData() {
           setIsLoading(true);
@@ -39,7 +38,7 @@ export default function Meals() {
         }
       
         fetchData();
-      }, []); // Зависимость от date, чтобы запрос выполнялся при изменении даты
+      }, []);
 
     return (
         <div className={styles.diary_meals}>

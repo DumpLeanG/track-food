@@ -1,7 +1,6 @@
 'use client'
 
 import styles from "./Lines.module.scss";
-import Dash from "./Dash";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -49,8 +48,8 @@ export default function Lines() {
 
     const options = {
         interaction: {
-            intersect: false, // Подсказка срабатывает на всей линии
-            mode: 'nearest' // Показывает значения всех датасетов
+            intersect: false,
+            mode: 'nearest'
         },
         plugins: {
             legend: {

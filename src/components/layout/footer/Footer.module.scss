@@ -9,3 +9,9 @@
         color: $grey;
     }
 }
+
+@media (max-width: 640px){
+    .footer {
+        display: none;
+    } 
+}

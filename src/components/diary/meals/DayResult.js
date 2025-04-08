@@ -2,11 +2,13 @@ import styles from "./DayResult.module.scss";
 import { useContext } from "react";
 import { DayContext } from "@/lib/DayContext";
 import { EatenFoodContext } from "@/lib/EatenFoodContext";
+import { IsDeviceContext } from "@/lib/IsDeviceContext";
 
 
 export default function DayResult() {
     const { day } = useContext(DayContext);
     const { eatenFood, isLoading } = useContext(EatenFoodContext);
+    const { isSmallMobile } = useContext(IsDeviceContext);
     const filteredFood = eatenFood.filter((food) => food.date === `${day.getFullYear()}-${day.getMonth() + 1 < 10 ? '0' : ''}${day.getMonth() + 1}-${day.getDate() < 10 ? '0' : ''}${day.getDate()}`);
     const filteredFoodInfo = {
         proteins: filteredFood.reduce((sum, food) => sum + food.proteins, 0),
@@ -17,12 +19,22 @@ export default function DayResult() {
 
     return (
         <div className={styles.diary_meals_result}>
+            {!isSmallMobile ?
             <div className={styles.diary_meals_result_names}>
                 <span>Белки</span>
                 <span>Жиры</span>
                 <span>Углеводы</span>
                 <span>Калории</span>
             </div>
+            :
+            <div className={styles.diary_meals_result_names}>
+                <span>Бел</span>
+                <span>Жир</span>
+                <span>Угл</span>
+                <span>Кал</span>
+            </div>
+            }
+            
             <div className={styles.diary_meals_result_numbers}>
                 {!isLoading ?
                     <>

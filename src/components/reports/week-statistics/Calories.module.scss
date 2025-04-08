@@ -19,3 +19,42 @@
         animation: spin 1s linear infinite;
     }
 }
+
+@media (max-width: 768px) {
+    .reports_statistics_calories {
+        div {
+            gap: 30px;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .reports_statistics_calories {
+        flex-direction: column;
+        gap: 10px;
+        div {
+            justify-content: space-between;
+            gap: normal;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .reports_statistics_calories {
+        padding: 10px 20px;
+        &_load {
+            width: 17px;
+            height: 17px;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .reports_statistics_calories {
+        flex-direction: column;
+        div {
+            gap: 10px;
+            flex-direction: column;
+        }
+    }
+}

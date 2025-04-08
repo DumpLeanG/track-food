@@ -9,3 +9,9 @@
     box-shadow: $shadow;
     font-weight: 700;
 }
+
+@media (max-width: 480px) {
+    .reports_week {
+        padding: 10px 20px;
+    }
+}
