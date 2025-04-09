@@ -17,7 +17,7 @@ export default function List({ day, setDay }) {
                     handleClick={() => setDay(currentDate)}
                     date={currentDate}
                     dateText={isLaptop ? `${currentDate.getDate()}.${currentDate.getMonth() + 1}` : `${weekDays[currentDate.getDay()]} / ${currentDate.getDate()}.${currentDate.getMonth() + 1}`}
-                    isActive={currentDate.toDateString() === day.toDateString()}
+                    isActive={currentDate.toLocaleString() === day.toLocaleString()}
                 />
             ))}
         </ul>
