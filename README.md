@@ -42,7 +42,9 @@
   <pre><code>npm install
 # или
 pnpm install</code></pre>
-  <h3>2. Настройка переменных окружения</h3>
+  <h3>2. Регистрация на сайте Fatsecret API</h3>
+  <p>Перейдите по ссылке и зарегистрируйтесь на сайте API, чтобы получить CLIENT_ID и CLIENT_SECRET, а также добавить свой IP-адрес в вайт-лист: <a href="https://platform.fatsecret.com/register">https://platform.fatsecret.com/register</a></p>
+  <h3>3. Настройка переменных окружения</h3>
   <p>Создайте файл <code>.env.local</code> в корне проекта:</p>
   <pre># Supabase  
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url  
@@ -50,7 +52,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 # FatsecretAPI
 CLIENT_ID=your_client_id
 CLIENT_SECRET=your_client_secret</pre>
-  <h3>3. Запуск dev-сервера</h3>
+  <h3>4. Запуск dev-сервера</h3>
   <pre><code>npm run dev
 # или
 pnpm run dev</code></pre>
