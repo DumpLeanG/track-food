@@ -1,5 +1,5 @@
   <h1>Track-Food: Персональный трекер питания</h1>
-  <p><strong>Next.js | React | SCSS | FatSecret API | Supabase</strong></p>
+  <p><strong>Next.js | React | SCSS | FatSecret API | Supabase | Chart.js</strong></p>
   <h2>📌 О проекте</h2>
   <p><strong>Track-Food</strong> — это веб-приложение для учета потребления калорий и БЖУ. Интегрировано с <strong>FatSecret Platform API</strong> для базы продуктов и <strong>Supabase</strong> для хранения пользовательских данных.</p>
   <h3>🔥 Возможности</h3>
