@@ -111,7 +111,7 @@ export default function Auth() {
                     <span className={`${styles.auth_form_head_item} ${(activeItem) === "Registration" && styles.active_item}`} onClick={handleChangeActiveItem}>Регистрация</span>
                 </div>
                 {error && <p className={styles.auth_form_txt} style={{ color: styles.red }}>{error}</p>}
-                {success && <p className={styles.auth_form_txt} style={{ color: styles.green }}>Пользователь успешно зарегистрирован! Подтвердите email.</p>}
+                {success && <p className={styles.auth_form_txt} style={{ color: styles.green }}>Пользователь успешно зарегистрирован! {/*Подтвердите email.*/}</p>}
                 {(activeItem === "Login")
                 ? <Login className={styles.auth_form_box} email={email} setEmail={setEmail} password={password} setPassword={setPassword}/>
                 : <Registration className={styles.auth_form_box} name={name} setName={setName} email={email} setEmail={setEmail} password={password} setPassword={setPassword} confirmPassword={confirmPassword} setConfirmPassword={setConfirmPassword}/>}
